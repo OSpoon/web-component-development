@@ -1,7 +1,7 @@
 # Developing Quark Components
 With this project, you can create a series of cross-technology stack/frameworkless components of your own.
 
-中文 | [English](./README.es-US.md)
+[中文](./README.md) | English
 ## Support
 Changes made to `template-quarkc-component-ts` include:
 | Number | Description                  |
