@@ -1,7 +1,6 @@
 import { QuarkElement, property, customElement } from "quarkc"
 import style from "./index.less?inline"
-
-@customElement({ tag: "my-component", style })
+@customElement({ tag: "my-component", style: `${style}@unocss-placeholder` })
 class MyComponent extends QuarkElement {
   @property({ type: Number }) // 外部属性
   count = 0
@@ -27,7 +26,7 @@ class MyComponent extends QuarkElement {
           <a href="https://quarkc.hellobike.com" target="_blank">
             <img
               src="https://quark-design.hellobike.com/assets/quark-logo.f9a6a307.png"
-              class="logo"
+              class="my-component-logo"
               alt="quark logo"
             />
           </a>
@@ -35,8 +34,8 @@ class MyComponent extends QuarkElement {
 
         <h1>Quark - {this.text}</h1>
 
-        <div className="card">
-          <button onClick={this.add}>count is: {this.count}</button>
+        <div className="p-8">
+          <button class="my-component-button" onClick={this.add}>count is: {this.count}</button>
         </div>
       </>
     );
