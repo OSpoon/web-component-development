@@ -1,30 +1,32 @@
-# UnoCSS for Quark
+# Quarkc 组件开发 - UnoCSS
+
+将 UnoCSS (即时按需原子 CSS 引擎) 引入 Quarkc 组件开发
 
 中文 | [English](./README.es-US.md)
 
-## 安装UnoCSS：
+## 1. 安装 UnoCSS
 
 ```
 npm install -D unocss
 ```
 
-## 初始化 Plugin
+## 2. 配置 UnoCSS
 
 ```javascript
 import UnoCSS from 'unocss/vite';
 import { defineConfig } from 'vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
         UnoCSS({
+            // webcomponent 启用
             mode: 'shadow-dom',
         })
     ]
 });
 ```
 
-## 新增 `uno.config.ts`
+## 增加 `uno.config.ts` 配置文件
 
 ```javascript
 // uno.config.ts
@@ -35,12 +37,14 @@ export default defineConfig({
 })
 ```
 
-## 增加 `@unocss-placeholder` 到 style
+## 添加 `@unocss-placeholder` 到样式表
 
 ```javascript
-@customElement({ tag: "my-component", style: `${style}@unocss-placeholder` })
+@customElement({ 
+    tag: "my-component", 
+    style: `${style}@unocss-placeholder` 
+})
 class MyComponent extends QuarkElement {}
 ```
-
 
 想了解更多信息，请参考：https://unocss.dev/
