@@ -1,4 +1,4 @@
-# Developing Quark Components
+# Developing Quarkc Components
 With this project, you can create a series of cross-technology stack/frameworkless components of your own.
 
 [中文](./README.md) | English
