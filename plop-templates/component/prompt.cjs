@@ -1,4 +1,35 @@
 "use strict";
+const { JSDOM } = require("jsdom");
+const { pascalCase } = require("change-case");
+
+function hasHrefContent(document, href) {
+  const links = document.querySelectorAll("a");
+  return Array.from(links).some((link) => link.href === href);
+}
+
+function insertATag(document, href, textContent) {
+  const ul = document.querySelector("ul");
+  const li = document.createElement("li");
+  const a = document.createElement("a");
+  a.href = href;
+  a.textContent = textContent;
+  li.append(a);
+  ul.appendChild(li);
+}
+
+function transformEntry(fileContents, data) {
+  const name = pascalCase(data.name);
+  const href = `./components/${name}/demo/index.html`;
+  const dom = new JSDOM(fileContents);
+  const { window } = dom;
+  const { document } = window;
+  const exist = hasHrefContent(document, href);
+  if (!exist) {
+    insertATag(document, href , `${name} in H5`);
+    return dom.serialize();
+  }
+  return fileContents;
+}
 
 module.exports = {
   description: "generate a component",
@@ -49,6 +80,32 @@ module.exports = {
         templateFile: "plop-templates/component/src/vite-env.d.ts.hbs",
         skipIfExists: true,
       },
+      {
+        type: "add",
+        path: `components/${name}/demo/index.html`,
+        templateFile: "plop-templates/component/src/demo/index.html.hbs",
+        skipIfExists: true,
+        data: {
+          name,
+        },
+      },
+      {
+        type: "add",
+        path: `components/${name}/demo/index.vue.html`,
+        templateFile: "plop-templates/component/src/demo/index.vue.html.hbs",
+        data: {
+          name,
+        },
+        skipIfExists: true,
+      },
+      {
+        type: "modify",
+        path: 'index.html',
+        data: {
+          name,
+        },
+        transform: (fileContents, data) => transformEntry(fileContents, data),
+      }
     ];
 
     return actions;

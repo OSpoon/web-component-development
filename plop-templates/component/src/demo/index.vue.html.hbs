@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Test in Vue.js</title>
+    <title>{{ properCase name }} in Vue.js</title>
     <style>
       body {
         margin: 0;
@@ -16,14 +16,14 @@
   </head>
   <body>
     <div id="app">
-      <my-component :text="message"></my-component>
+      <{{ kebabCase name }} :text="message"></{{ kebabCase name }}>
     </div>
 
-    <p>Edit <code>src/index.tsx</code> and save to test HMR</p>
+    <p>Edit <code>components/{{ properCase name }}/index.tsx</code> and save to test HMR</p>
   </body>
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
   <script type="module">
-    import "./components/MyComponent/index.tsx"
+    import "../index.tsx"
 
     const { createApp } = Vue
 
