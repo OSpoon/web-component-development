@@ -1,3 +1,4 @@
+{{#if normalStyle}}
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -69,3 +70,15 @@ button {
     background-color: #f9f9f9;
   }
 }
+{{/if}}
+
+{{#if unocssStyle}}
+:host {
+  display: block;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  border: 2px solid #646cff;
+  width: 500px;
+}
+{{/if}}
