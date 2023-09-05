@@ -1,73 +1,38 @@
-# Developing Quark Components
-With this project, you can create a series of cross-technology stack/frameworkless components of your own.
+# Developing Quarkc Components with UnoCSS
+Integrating UnoCSS (an on-demand, atomic CSS engine) into Quarkc component development.
 
 [中文](./README.md) | English
-## Support
-Changes made to `template-quarkc-component-ts` include:
-| Number | Description                  |
-| ------ | ---------------------------- |
-| 1      | Adjusted `npm run build` to batch build |
-| 2      | Added `npm run new` to create components |
-## Initialization
+## 1. Install UnoCSS
 ```
-npm install
-npm run dev
+npm install -D unocss
 ```
-## 1. Generating Components
-Generate a component named MyComponent
+## 2. Configure UnoCSS
+```javascript
+import UnoCSS from 'unocss/vite';
+import { defineConfig } from 'vite';
+export default defineConfig({
+    plugins: [
+        UnoCSS({
+            // enable webcomponent
+            mode: 'shadow-dom',
+        })
+    ]
+});
 ```
-$ npm run new
-> cross-platform-components@0.0.1 new
-> plop
-? component name please : my-component
-✔  ++ /components/MyComponent/index.tsx
-✔  ++ /components/MyComponent/index.less
-✔  ++ /components/MyComponent/vite-env.d.ts
+## Add `uno.config.ts` Configuration File
+```javascript
+// uno.config.ts
+import { defineConfig } from 'unocss'
+export default defineConfig({
+  // ...UnoCSS options
+})
 ```
-## 2. Using Components
-```html
-<head>
-  <!-- ① Import component -->
-  <script type="module" src="./components/MyComponent/index.tsx"></script>
-</head>
-<body>
-  <!-- ② Use component -->
-  <my-component text="Made for cross-technology stack purposes!"></my-component>
-</body>
+## Add `@unocss-placeholder` to Style Sheet
+```javascript
+@customElement({ 
+    tag: "my-component", 
+    style: `${style}@unocss-placeholder` 
+})
+class MyComponent extends QuarkElement {}
 ```
-## 3. Packaging
-```
-npm run build
-```
-The output after packaging is: `dist/<component name>/index.js` and `dist/<component name>/index.umd.js`.
-```tree
-.
-├── types
-|     └── index.d.ts
-├── index.js
-├── index.umd.js
-└── package.json
-```
-## 4. Verifying Output
-Adjust the component path to the packaged output path
-```html
-<head>
-  <!-- ① Import component -->
-  <script type="module" src="./dist/MyComponent/index.js"></script>
-</head>
-<body>
-  <!-- ② Use component -->
-  <my-component text="Made for cross-technology stack purposes!"></my-component>
-</body>
-```
-```html
-<head>
-  <!-- ① Import component -->
-  <script type="module" src="./dist/MyComponent/index.umd.js"></script>
-</head>
-<body>
-  <!-- ② Use component -->
-  <my-component text="Made for cross-technology stack purposes!"></my-component>
-</body>
-```
-For detailed documentation, please visit: https://quarkc.hellobike.com/#/en-US/docs/publishing
+For more information, please visit: https://unocss.dev/
