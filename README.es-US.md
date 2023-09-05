@@ -8,6 +8,7 @@ Changes made to `template-quarkc-component-ts` include:
 | ------ | ---------------------------- |
 | 1      | Adjusted `npm run build` to batch build |
 | 2      | Added `npm run new` to create components |
+| 3      | [Add `unocss` atomic CSS configuration.](https://github.com/OSpoon/cross-platform-components/tree/unocss/README.md)  |
 ## Initialization
 ```
 npm install
