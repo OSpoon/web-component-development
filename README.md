@@ -1,4 +1,4 @@
-# Quark 组件开发
+# Quarkc 组件开发
 您可以基于本工程构建跨技术栈/无框架的组件，满足个性化需求。
 
 中文 | [English](./README.es-US.md)
