@@ -6,13 +6,20 @@ module.exports = {
     {
       type: "input",
       name: "name",
-      message: "component name please :",
+      message: "enter component name :",
       validate: (v) => {
         return !v || v.trim() === "" ? `${name} is required` : true;
       },
     },
+    {
+      type: "list",
+      name: "styleMode",
+      message: "select a style mode :",
+      choices: ["normal", "unocss"]
+    }
   ],
-  actions: () => {
+  actions: options => {
+    const { styleMode } = options;
     const name = "{{properCase name}}";
     const actions = [
       {
@@ -21,6 +28,8 @@ module.exports = {
         templateFile: "plop-templates/component/src/index.hbs",
         data: {
           name,
+          normalStyle: styleMode === "normal",
+          unocssStyle: styleMode === "unocss"
         },
         skipIfExists: true,
       },
@@ -28,6 +37,10 @@ module.exports = {
         type: "add",
         path: `components/${name}/index.less`,
         templateFile: "plop-templates/component/src/index.less.hbs",
+        data: {
+          normalStyle: styleMode === "normal",
+          unocssStyle: styleMode === "unocss"
+        },
         skipIfExists: true,
       },
       {
