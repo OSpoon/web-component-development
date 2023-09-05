@@ -18,7 +18,7 @@ export default defineConfig({
     ]
 });
 ```
-## 添加 `uno.config.ts` 配置文件
+## 3. 添加 `uno.config.ts` 配置文件
 ```javascript
 // uno.config.ts
 import { defineConfig } from 'unocss'
@@ -26,7 +26,7 @@ export default defineConfig({
   // ...UnoCSS options
 })
 ```
-## 在样式表中添加 `@unocss-placeholder`
+## 4. 在样式表中添加 `@unocss-placeholder`
 ```javascript
 @customElement({ 
     tag: "my-component", 
