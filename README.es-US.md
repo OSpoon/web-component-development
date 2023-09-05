@@ -19,7 +19,7 @@ export default defineConfig({
     ]
 });
 ```
-## Add `uno.config.ts` Configuration File
+## 3. Add `uno.config.ts` Configuration File
 ```javascript
 // uno.config.ts
 import { defineConfig } from 'unocss'
@@ -27,7 +27,7 @@ export default defineConfig({
   // ...UnoCSS options
 })
 ```
-## Add `@unocss-placeholder` to Style Sheet
+## 4. Add `@unocss-placeholder` to Style Sheet
 ```javascript
 @customElement({ 
     tag: "my-component", 
