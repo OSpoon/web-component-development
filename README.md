@@ -9,6 +9,7 @@
 | 1    | 调整 `npm run build` 为批量构建  |
 | 2    | 新增 `npm run new` 创建组件  |
 | 3    | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/cross-platform-components/tree/unocss/README.md)  |
+| 4    | 替换测试套件为 `@web/test-runnner` |
 ## 初始化
 ```
 npm install
