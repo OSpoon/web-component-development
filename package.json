@@ -5,7 +5,8 @@
     "dev": "npm run start",
     "start": "vite --open",
     "build": "rimraf dist && esno ./scripts/components-script.ts",
-    "new": "plop"
+    "new": "plop",
+    "test": "wtr"
   },
   "type": "module",
   "main": "./lib/index.umd.js",
@@ -27,8 +28,10 @@
     "quarkc": "^1.0.17"
   },
   "devDependencies": {
+    "@open-wc/testing": "^3.2.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.2",
+    "@web/test-runner": "^0.17.1",
     "change-case": "^4.1.2",
     "esno": "^0.17.0",
     "fs-extra": "^11.1.1",

@@ -1,0 +1,27 @@
+import { expect, fixture } from "@open-wc/testing";
+import "../../../dist/{{ properCase name }}/index";
+
+const data = {
+  text: "HelloWorld",
+  count: 1,
+};
+
+let el;
+
+describe("<{{ kebabCase name }} />", async () => {
+  it("property text exist", async () => {
+    el = await fixture(`<{{ kebabCase name }} text=${data.text}></{{ kebabCase name }}`);
+    expect(el.text).to.equal(data.text);
+  });
+
+  it("property count exist", async () => {
+    el = await fixture(`<{{ kebabCase name }} count=${data.count}></{{ kebabCase name }}`);
+    expect(el.count).to.equal(data.count);
+  });
+
+  it("property count changed", async () => {
+    el = await fixture(`<{{ kebabCase name }} count=${data.count}></{{ kebabCase name }}`);
+    el.add();
+    expect(el.count).to.equal(data.count + 1);
+  });
+});

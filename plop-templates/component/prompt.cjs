@@ -99,6 +99,15 @@ module.exports = {
         skipIfExists: true,
       },
       {
+        type: "add",
+        path: `components/${name}/__tests__/index.test.js`,
+        templateFile: "plop-templates/component/src/__tests__/index.test.js.hbs",
+        data: {
+          name,
+        },
+        skipIfExists: true,
+      },
+      {
         type: "modify",
         path: 'index.html',
         data: {
