@@ -1,0 +1,17 @@
+import { expect, fixture } from "@open-wc/testing";
+import "../../../dist/{{ properCase name }}/index";
+
+const data = {/** Declare component data **/};
+
+let el;
+
+describe("<{{ kebabCase name }} />", async () => {
+  /**
+    eg: This is an example of checking whether the text attribute of a component after rendering matches the declared text data
+
+    it("property text exist", async () => {
+      el = await fixture(`<{{ kebabCase name }} text=${data.text}></{{ kebabCase name }}`);
+      expect(el.text).to.equal(data.text);
+    });
+  */
+});
