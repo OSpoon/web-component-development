@@ -1,10 +1,16 @@
-import { AutomaticallyCompileComponents } from "./web-test-runner.plugins.mjs";
+import {
+  AutomaticallyCompileComponents,
+  FixContentType,
+} from "./web-test-runner.plugins.mjs";
 
 const filteredLogs = ["Lit is in dev mode"];
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   nodeResolve: true,
-  files: ["components/**/__tests__/*.test.js"],
+  files: [
+    "components/**/__tests__/*.test.js",
+    "components/**/__tests__/*.test.ts",
+  ],
   coverage: true,
   filterBrowserLogs(log) {
     for (const arg of log.args) {
@@ -17,7 +23,5 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     return true;
   },
-  plugins: [
-    AutomaticallyCompileComponents(),
-  ],
+  plugins: [AutomaticallyCompileComponents(), FixContentType(".ts", "js")],
 });
