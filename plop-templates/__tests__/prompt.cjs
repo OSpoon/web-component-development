@@ -24,16 +24,26 @@ module.exports = {
     {
       type: "list",
       name: "name",
-      message: "select a component :",
+      message: "select components to test:",
       choices: async () => await generateChoices(),
     },
+    {
+      type: "list",
+      name: "mode",
+      message: "choose the syntax you are used to:",
+      choices: ["JavaScript", "Typescript"],
+    },
   ],
-  actions: (_) => {
+  actions: (options) => {
     const name = "{{properCase name}}";
+    const { mode } = options;
+    console.log(options)
     const actions = [
       {
         type: "add",
-        path: `components/${name}/__tests__/index-${generateRandomId()}.test.js`,
+        path: `components/${name}/__tests__/index-${generateRandomId()}.test.${
+          mode === "JavaScript" ? "js" : "ts"
+        }`,
         templateFile: "plop-templates/__tests__/src/index.test.js.hbs",
         data: {
           name,

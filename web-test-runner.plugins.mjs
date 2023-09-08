@@ -30,3 +30,14 @@ export const AutomaticallyCompileComponents = () => {
     },
   };
 };
+
+export const FixContentType = (suffix, type) => {
+  return {
+    name: "fix-content-type",
+    resolveMimeType: (context) => {
+      if (context.path.endsWith(suffix)) {
+        return type;
+      }
+    },
+  };
+};
