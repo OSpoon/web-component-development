@@ -1,5 +1,5 @@
 {
-  "name": "cross-platform-components",
+  "name": "quarkc-component-development",
   "version": "0.0.1",
   "scripts": {
     "dev": "npm run start",
