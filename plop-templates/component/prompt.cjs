@@ -2,18 +2,18 @@
 const { JSDOM } = require("jsdom");
 const { pascalCase } = require("change-case");
 
-function hasHrefContent(document, href) {
+function hasTextContent(document, textContent) {
   const links = document.querySelectorAll("a");
-  return Array.from(links).some((link) => link.href === href);
+  return Array.from(links).some((link) => link.textContent === textContent);
 }
 
 function insertATag(document, href, textContent) {
   const ul = document.querySelector("ul");
   const li = document.createElement("li");
   const a = document.createElement("a");
-  li.classList.add('h-8 line-height-loose');
-  a.classList.add('c-#4c4c52 hover:c-#55bffe');
-  a.onclick = `gotoComp(${href})`;
+  li.classList.add("h-8", "line-height-loose");
+  a.classList.add("c-#4c4c52", "hover:c-#55bffe");
+  a.href = href;
   a.textContent = textContent;
   li.append(a);
   ul.appendChild(li);
@@ -25,9 +25,9 @@ function transformEntry(fileContents, data) {
   const dom = new JSDOM(fileContents);
   const { window } = dom;
   const { document } = window;
-  const exist = hasHrefContent(document, href);
+  const exist = hasTextContent(document, href);
   if (!exist) {
-    insertATag(document, href , `${name} in H5`);
+    insertATag(document, href, `${name} in H5`);
     return dom.serialize();
   }
   return fileContents;
@@ -48,10 +48,10 @@ module.exports = {
       type: "list",
       name: "styleMode",
       message: "select a style mode :",
-      choices: ["normal", "unocss"]
-    }
+      choices: ["normal", "unocss"],
+    },
   ],
-  actions: options => {
+  actions: (options) => {
     const { styleMode } = options;
     const name = "{{properCase name}}";
     const actions = [
@@ -62,7 +62,7 @@ module.exports = {
         data: {
           name,
           normalStyle: styleMode === "normal",
-          unocssStyle: styleMode === "unocss"
+          unocssStyle: styleMode === "unocss",
         },
         skipIfExists: true,
       },
@@ -72,7 +72,7 @@ module.exports = {
         templateFile: "plop-templates/component/src/index.less.hbs",
         data: {
           normalStyle: styleMode === "normal",
-          unocssStyle: styleMode === "unocss"
+          unocssStyle: styleMode === "unocss",
         },
         skipIfExists: true,
       },
@@ -103,7 +103,8 @@ module.exports = {
       {
         type: "add",
         path: `components/${name}/__tests__/index.test.js`,
-        templateFile: "plop-templates/component/src/__tests__/index.test.js.hbs",
+        templateFile:
+          "plop-templates/component/src/__tests__/index.test.js.hbs",
         data: {
           name,
         },
@@ -111,12 +112,12 @@ module.exports = {
       },
       {
         type: "modify",
-        path: 'index.html',
+        path: "index.html",
         data: {
           name,
         },
         transform: (fileContents, data) => transformEntry(fileContents, data),
-      }
+      },
     ];
 
     return actions;
