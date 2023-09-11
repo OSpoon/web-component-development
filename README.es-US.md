@@ -2,7 +2,7 @@
 With this project, you can create a series of cross-technology stack/frameworkless components of your own.
 
 [中文](./README.md) | English
-## Support
+## Changes
 Changes made to `template-quarkc-component-ts` include:
 | Number | Description                  |
 | ------ | ---------------------------- |
