@@ -1,4 +1,5 @@
-# Developing Quarkc Components
+# Developing Cross-Platform Components Based on Quarkc
+
 With this project, you can create a series of cross-technology stack/frameworkless components of your own.
 
 [中文](./README.md) | English
@@ -8,7 +9,7 @@ Changes made to `template-quarkc-component-ts` include:
 | ------ | ---------------------------- |
 | 1      | Adjusted `npm run build` to batch build |
 | 2      | Added `npm run new` to create components |
-| 3      | [Add `unocss` atomic CSS configuration.](https://github.com/OSpoon/quarkc-component-development/tree/unocss/README.md)  |
+| 3      | [Add `unocss` atomic CSS configuration.](https://github.com/OSpoon/web-component-development/tree/unocss/README.md)  |
 | 4      | Replace the test suite with `@web/test-runnner` |
 ## Initialization
 ```
@@ -19,7 +20,7 @@ npm run dev
 Generate a component named MyComponent
 ```
 $ npm run new
-> quarkc-component-development@0.0.1 new
+> web-component-development@0.0.1 new
 > plop
 ? component name please : my-component
 ✔  ++ /components/MyComponent/index.tsx
