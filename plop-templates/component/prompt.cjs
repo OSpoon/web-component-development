@@ -11,7 +11,9 @@ function insertATag(document, href, textContent) {
   const ul = document.querySelector("ul");
   const li = document.createElement("li");
   const a = document.createElement("a");
-  a.href = href;
+  li.classList.add('h-8 line-height-loose');
+  a.classList.add('c-#4c4c52 hover:c-#55bffe');
+  a.onclick = `gotoComp(${href})`;
   a.textContent = textContent;
   li.append(a);
   ul.appendChild(li);
