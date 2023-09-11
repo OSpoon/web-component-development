@@ -1,4 +1,4 @@
-# Quarkc 组件开发
+# 基于 Quarkc 跨端组件开发
 您可以基于本工程构建跨技术栈/无框架的组件，满足个性化需求。
 
 中文 | [English](./README.es-US.md)
@@ -8,7 +8,7 @@
 | ---- | ------------------------------- |
 | 1    | 调整 `npm run build` 为批量构建  |
 | 2    | 新增 `npm run new` 创建组件  |
-| 3    | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/quarkc-component-development/tree/unocss/README.md)  |
+| 3    | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/web-component-development/tree/unocss/README.md)  |
 | 4    | 替换测试套件为 `@web/test-runnner` |
 ## 初始化
 ```
@@ -19,7 +19,7 @@ npm run dev
 创建名为 MyComponent 的组件：
 ```
 $ npm run new
-> quarkc-component-development@0.0.1 new
+> web-component-development@0.0.1 new
 > plop
 ? 请输入组件名称: my-component
 ✔  ++ /components/MyComponent/index.tsx

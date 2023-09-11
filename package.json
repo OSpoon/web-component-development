@@ -1,5 +1,5 @@
 {
-  "name": "quarkc-component-development",
+  "name": "web-component-development",
   "version": "0.0.1",
   "scripts": {
     "dev": "npm run start",
