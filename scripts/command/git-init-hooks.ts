@@ -1,7 +1,7 @@
 import { execCommand } from "./../shared/index";
 import { rimraf } from "rimraf";
 import path from "node:path";
-import { existsSync } from "fs-extra";
+import { existsSync } from "fs";
 
 export const gitInitHooks = async (cwd = process.cwd()) => {
   const dohusky = path.join(cwd, ".husky");
