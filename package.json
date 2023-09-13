@@ -9,7 +9,6 @@
     "new": "plop",
     "test": "wtr",
     "cm": "esno ./scripts/git-commit-script.ts",
-    "cmv": "esno ./scripts/git-commit-verify-script.ts",
     "cleanup": "esno ./scripts/cheanup-script.ts"
   },
   "type": "module",
