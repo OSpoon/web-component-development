@@ -103,3 +103,5 @@ export const cleanUpDirs = [
   "**/node_modules",
   "!node_modules/**",
 ];
+
+export const cwd = process.cwd();
