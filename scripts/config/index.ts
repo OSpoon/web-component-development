@@ -96,3 +96,10 @@ export const gitCommitScopes: Array<CommitScope> = [
     description: "用户界面",
   },
 ];
+
+export const cleanUpDirs = [
+  "**/dist",
+  "**/coverage",
+  "**/node_modules",
+  "!node_modules/**",
+];
