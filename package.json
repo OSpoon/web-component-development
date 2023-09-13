@@ -2,7 +2,7 @@
   "name": "web-component-development",
   "version": "0.0.1",
   "scripts": {
-    "prepare": "esno ./scripts/git-init-hooks-script.ts",
+    "prepare": "esno ./scripts/prepare-script.ts",
     "dev": "npm run start",
     "start": "vite --open",
     "build": "rimraf dist && esno ./scripts/components-script.ts",
