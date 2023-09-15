@@ -1,9 +1,8 @@
-import { gitInitHooks } from "./command/git-init-hooks";
-import { cwd } from "./config";
+import { gitInitSimpleHooks } from "code-genius";
 
 async function launcher() {
   await Promise.all([
-    await gitInitHooks(cwd),
+    await gitInitSimpleHooks(process.cwd()),
   ]);
 }
 

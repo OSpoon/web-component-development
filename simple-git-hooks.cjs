@@ -1,3 +1,3 @@
 module.exports = {
-  "commit-msg": "npx esno ./scripts/git-commit-verify-script.ts",
+  "commit-msg": "npx code-genius cmv",
 };
