@@ -2,13 +2,12 @@
   "name": "web-component-development",
   "version": "0.0.1",
   "scripts": {
-    "prepare": "esno ./scripts/prepare-script.ts",
+    "prepare": "codeg hooks",
     "dev": "npm run start",
     "start": "vite --open",
-    "build": "cg cup --ignore ./dist && esno ./scripts/components-script.ts",
+    "build": "codeg clear && esno ./scripts/components-script.ts",
     "new": "plop",
-    "test": "wtr",
-    "cm": "cg cm"
+    "test": "wtr"
   },
   "type": "module",
   "main": "./lib/index.umd.js",
@@ -30,12 +29,15 @@
     "quarkc": "^1.0.17"
   },
   "devDependencies": {
+    "@codegenius/clear-plugin": "^0.0.7",
+    "@codegenius/hooks-plugin": "^0.1.1",
+    "@codegenius/verify-plugin": "^0.0.2",
     "@open-wc/testing": "^3.2.0",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.2",
     "@web/test-runner": "^0.17.1",
     "change-case": "^4.1.2",
-    "code-genius": "^0.1.2",
+    "code-genius": "^0.4.34",
     "enquirer": "^2.4.1",
     "esno": "^0.17.0",
     "execa": "^8.0.1",

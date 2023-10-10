@@ -1,3 +1,3 @@
 module.exports = {
-  "commit-msg": "npx code-genius cmv",
+  "commit-msg": "npx codeg verify",
 };
