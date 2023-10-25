@@ -1,0 +1,34 @@
+{
+  "scripts": [
+    {
+      "command": "codeg hooks",
+      "display": "prepare",
+      "description": "自动执行"
+    },
+    {
+      "command": "npm run start",
+      "display": "dev",
+      "description": "启动开发模式"
+    },
+    {
+      "command": "vite --open",
+      "display": "start",
+      "description": "启动预览模式"
+    },
+    {
+      "command": "codeg clear && esno ./scripts/components-script.ts",
+      "display": "build",
+      "description": "构建组件"
+    },
+    {
+      "command": "plop",
+      "display": "new",
+      "description": "生成新组件"
+    },
+    {
+      "command": "wtr",
+      "display": "test",
+      "description": "启动测试"
+    }
+  ]
+}
