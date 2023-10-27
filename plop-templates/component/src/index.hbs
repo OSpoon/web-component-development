@@ -1,27 +1,28 @@
-import { QuarkElement, property, customElement } from "quarkc"
-import style from "./index.less?inline"
+import { QuarkElement, property, customElement } from "quarkc";
+import style from "./index.less?inline";
 
 @customElement({ 
-  tag: "{{ kebabCase name }}", {{#if normalStyle}}style{{/if}}
+  tag: "{{ kebabCase name }}", 
+  {{#if normalStyle}}style,{{/if}}
   {{#if unocssStyle}}
-  style: `${style}@unocss-placeholder`
+  style: `${style}@unocss-placeholder`,
   {{/if}}
 })
 class {{ properCase name }} extends QuarkElement {
   @property({ type: Number }) // 外部属性
-  count = 0
+  count = 0;
 
   @property({ type: String })
-  text = ''
+  text = "";
 
   add = () => {
     // 内部事件
-    this.count += 1
+    this.count += 1;
   };
 
   componentDidMount() {
     // 生命周期
-    console.log("dom loaded!")
+    console.log("dom loaded!");
     // ...
   }
 
@@ -65,6 +66,6 @@ class {{ properCase name }} extends QuarkElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    "{{ kebabCase name }}": {{ properCase name }}
+    {{ kebabCase name }}: {{ properCase name }};
   }
 }
