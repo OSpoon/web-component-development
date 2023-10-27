@@ -4,6 +4,8 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import { build, BuildOptions, InlineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import { dependencies } from "../package.json";
+import { kebabCase } from "change-case";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const componentRootPath = path.resolve(__dirname, "../components/");
@@ -82,7 +84,7 @@ const buildAllComponents = async () => {
     syncDts(componentDirNames.length === 1, name);
 
     outputPkgFile(outputCompDir, {
-      name: `${name.toLocaleLowerCase()}`,
+      name: `${kebabCase(name)}`,
       main: `index.umd.js`,
       module: `index.js`,
       types: `./types/index.d.ts`,
@@ -93,9 +95,7 @@ const buildAllComponents = async () => {
           types: "./types/index.d.ts",
         },
       },
-      dependencies: {
-        quarkc: "^1.0.17",
-      },
+      dependencies
     });
   }
 
