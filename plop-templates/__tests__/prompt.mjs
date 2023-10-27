@@ -1,6 +1,6 @@
 "use strict";
-const path = require("path");
-const fs = require("fs-extra");
+import path from "node:path";
+import fs from "fs-extra";
 
 function generateRandomId() {
   const characters =
@@ -18,7 +18,7 @@ async function generateChoices() {
   return await fs.readdirSync(root);
 }
 
-module.exports = {
+export default {
   description: "generate a unit test",
   prompts: [
     {
@@ -37,7 +37,7 @@ module.exports = {
   actions: (options) => {
     const name = "{{properCase name}}";
     const { mode } = options;
-    console.log(options)
+    console.log(options);
     const actions = [
       {
         type: "add",

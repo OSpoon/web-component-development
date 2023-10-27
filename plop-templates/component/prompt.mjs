@@ -1,6 +1,6 @@
 "use strict";
-const { JSDOM } = require("jsdom");
-const { pascalCase } = require("change-case");
+import { JSDOM } from "jsdom";
+import { pascalCase } from "change-case";
 
 function hasTextContent(document, textContent) {
   const links = document.querySelectorAll("a");
@@ -33,7 +33,7 @@ function transformEntry(fileContents, data) {
   return fileContents;
 }
 
-module.exports = {
+export default {
   description: "generate a component",
   prompts: [
     {
