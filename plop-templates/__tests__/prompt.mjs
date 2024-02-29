@@ -1,4 +1,5 @@
 "use strict";
+import { fileURLToPath } from "url";
 import path from "node:path";
 import fs from "fs-extra";
 
@@ -14,7 +15,9 @@ function generateRandomId() {
 }
 
 async function generateChoices() {
+  const __dirname = path.dirname(fileURLToPath(import.meta.url));
   const root = path.resolve(__dirname, "../../components");
+  console.log(root);
   return await fs.readdirSync(root);
 }
 
@@ -41,9 +44,8 @@ export default {
     const actions = [
       {
         type: "add",
-        path: `components/${name}/__tests__/index-${generateRandomId()}.test.${
-          mode === "JavaScript" ? "js" : "ts"
-        }`,
+        path: `components/${name}/__tests__/index-${generateRandomId()}.test.${mode === "JavaScript" ? "js" : "ts"
+          }`,
         templateFile: "plop-templates/__tests__/src/index.test.js.hbs",
         data: {
           name,

@@ -10,19 +10,10 @@ import { kebabCase } from "change-case";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const componentRootPath = path.resolve(__dirname, "../components/");
 
-const OUTPUT_DTS = "dist/types";
+const syncDts = (name) =>
+  fs.copySync("dist/index.d.ts", `dist/${name}/index.d.ts`);
 
-const syncDts = (onlyOne, name) =>
-  fs.copySync(
-    path.resolve(
-      // 单个组件生成的 dts 文件缺少 name 目录
-      onlyOne ? `${OUTPUT_DTS}` : `${OUTPUT_DTS}/${name}`,
-      `index.d.ts`
-    ),
-    path.resolve(`dist/${name}/types`, `index.d.ts`)
-  );
-
-const clearDts = () => fs.removeSync(OUTPUT_DTS);
+const clearDts = () => fs.removeSync("dist/index.d.ts");
 
 const getComponentDirNames = () =>
   fs.readdirSync(componentRootPath).filter((filename) => {
@@ -81,21 +72,22 @@ const buildAllComponents = async () => {
       plugins: [dts()],
     } as InlineConfig);
 
-    syncDts(componentDirNames.length === 1, name);
+    // 单个组件需要处理 index.d.ts 文件路径
+    componentDirNames.length === 1 && syncDts(name);
 
     outputPkgFile(outputCompDir, {
       name: `${kebabCase(name)}`,
       main: `index.umd.js`,
       module: `index.js`,
-      types: `./types/index.d.ts`,
+      types: `index.d.ts`,
       exports: {
         ".": {
           import: "./index.js",
           require: "./index.umd.js",
-          types: "./types/index.d.ts",
+          types: "./index.d.ts",
         },
       },
-      dependencies
+      dependencies,
     });
   }
 
