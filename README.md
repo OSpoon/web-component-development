@@ -72,4 +72,4 @@ npm run build
   <my-component text="为跨技术栈而生！"></my-component>
 </body>
 ```
-想了解更多信息，请参考：https://quarkc.hellobike.com/#/zh-CN/docs/publishing
+想了解更多信息，请参考：https://quark-ecosystem.github.io/quarkc-docs/#/zh-CN/docs/publishing
