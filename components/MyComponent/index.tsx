@@ -1,25 +1,25 @@
-import { QuarkElement, property, customElement } from "quarkc";
-import style from "./index.less?inline";
+import { QuarkElement, customElement, property } from 'quarkc'
+import style from './index.less?inline'
 
 @customElement({
-  tag: "my-component",
+  tag: 'my-component',
   style,
 })
 class MyComponent extends QuarkElement {
   @property({ type: Number }) // 外部属性
-  count = 0;
+    count = 0
 
   @property({ type: String })
-  text = "";
+  text = ''
 
   add = () => {
     // 内部事件
-    this.count += 1;
-  };
+    this.count += 1
+  }
 
   componentDidMount() {
     // 生命周期
-    console.log("dom loaded!");
+    console.log('dom loaded!')
     // ...
   }
 
@@ -29,25 +29,31 @@ class MyComponent extends QuarkElement {
         <div>
           <a href="https://quarkc.hellobike.com" target="_blank">
             <img
-              src="https://quark-design.hellobike.com/assets/quark-logo.f9a6a307.png"
+              src="https://github.com/hellof2e/static/blob/main/quark-logo.png?raw=true"
               class="logo"
               alt="quark logo"
             />
           </a>
         </div>
 
-        <h1>Quark - {this.text}</h1>
+        <h1>
+          Quark -
+          {this.text}
+        </h1>
 
         <div className="card">
-          <button onClick={this.add}>count is: {this.count}</button>
+          <button onClick={this.add}>
+            count is:
+            {this.count}
+          </button>
         </div>
       </>
-    );
+    )
   }
 }
 
 declare global {
   interface HTMLElementTagNameMap {
-    "my-component": MyComponent;
+    'my-component': MyComponent
   }
 }

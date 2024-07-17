@@ -1,22 +1,22 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "esnext",
-    "moduleResolution": "node",
-    "strict": false,
     "jsx": "react",
     "jsxFactory": "QuarkElement.h",
     "jsxFragmentFactory": "QuarkElement.Fragment",
-    "sourceMap": false,
+    "lib": ["esnext", "dom"],
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": false,
     "declaration": true,
     "declarationDir": "dist/types",
     "emitDeclarationOnly": true,
     "removeComments": true,
-    "resolveJsonModule": true,
+    "sourceMap": false,
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "lib": ["esnext", "dom"]
+    "skipLibCheck": true
   },
   "include": ["components/**/*"],
   "exclude": ["node_modules/**"]
