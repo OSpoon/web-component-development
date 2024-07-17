@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset='UTF-8' />
     <title>{{ properCase name }} in Vue.js</title>
     <style>
       body {
@@ -18,25 +18,25 @@
     </style>
   </head>
   <body>
-    <div id="app">
-      <{{ kebabCase name }} :text="message"></{{ kebabCase name }}>
+    <div id='app'>
+      <{{ kebabCase name }} :text='message'></{{ kebabCase name }}>
     </div>
 
     <p>Edit <code>components/{{ properCase name }}/index.tsx</code> and save to test HMR</p>
-    <p><a href="./index.html">在 Html 中调试（Debugging in Html）</a></p>
+    <p><a href='./index.html'>在 Html 中调试（Debugging in Html）</a></p>
   </body>
-  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-  <script type="module">
-    import "../index.tsx";
+  <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+  <script type='module'>
+    import '../index.tsx';
 
     const { createApp } = Vue;
 
     createApp({
       data() {
         return {
-          message: "为跨技术栈而生！",
+          message: '为跨技术栈而生！',
         };
       },
-    }).mount("#app");
+    }).mount('#app');
   </script>
 </html>

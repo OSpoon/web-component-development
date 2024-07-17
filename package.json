@@ -26,9 +26,9 @@
     "dev": "npm run start",
     "start": "vite --open",
     "build": "rimraf dist && esno ./scripts/components-script.ts",
+    "test": "wtr",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "test": "wtr"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "quarkc": "^2.1.3"
