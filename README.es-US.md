@@ -73,4 +73,4 @@ Adjust the component path to the packaged output path
   <my-component text="Made for cross-technology stack purposes!"></my-component>
 </body>
 ```
-For detailed documentation, please visit: https://quarkc.hellobike.com/#/en-US/docs/publishing
+For detailed documentation, please visit: https://quark-ecosystem.github.io/quarkc-docs/#/en-US/docs/publishing
