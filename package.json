@@ -53,7 +53,7 @@
     "lint-staged": "^15.2.7",
     "plop": "^4.0.1",
     "postcss": "^8.4.39",
-    "rimraf": "^5.0.5",
+    "rimraf": "^6.0.1",
     "simple-git-hooks": "^2.11.1",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3",
