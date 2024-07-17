@@ -1,58 +1,69 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Web Component Development (预览/调试)</title>
+    <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css"
+    />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <title>Web Component Development (预览/调试)</title>
-  <script src="https://cdn.jsdelivr.net/npm/@unocss/runtime"></script>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@unocss/reset/tailwind.min.css">
-</head>
-
-<body class="overflow-hidden">
-  <header class="w-full bg-dark h-12 line-height-12">
-    <h1 class="w-screen font-bold c-white p-l p-r flex justify-between items-center">
-      Web Component Development (预览/调试)
-      <div class="flex gap-2">
-        <a target="_blank" href="https://github.com/OSpoon/web-component-development">
-          <img class="w-6 h-6" src="./assets/github.png">
-        </a>
-        <a target="_blank" href="./coverage/lcov-report/index.html">
-          <img class="w-6 h-6" src="./assets/coverage.png">
-        </a>
-      </div>
-    </h1>
-  </header>
-  <main class="flex">
-    <nav class="overflow-auto p-5 bg-light-100 w-60 h-[calc(100vh-3rem)] border-r-solid border-r-dark border-r-1">
-      <ul>
-        <li class="h-8 line-height-loose">
-          <a class="c-#4c4c52 hover:c-#55bffe" href="./components/MyComponent/demo/index.html">MyComponent in H5</a>
-        </li>
-      </ul>
-    </nav>
-    <content class="w-full">
-      <iframe id="iframe" class="w-full h-[calc(100vh-3rem)] p5"
-        src="./components/MyComponent/demo/index.html"></iframe>
-    </content>
-  </main>
-  <script>
-    (() => {
-      const alist = document.querySelectorAll("a");
-      alist.forEach((a) => {
-        if (!a.target) {
-          a.addEventListener("click", function (event) {
-            event.preventDefault();
-            const iframe = document.querySelector("#iframe");
-            iframe.src = a.href;
-          });
-        }
-      });
-    })();
-  </script>
-
-
-
-
-</body>
-
+  <body class="overflow-hidden">
+    <header class="w-full bg-dark h-12 line-height-12">
+      <h1
+        class="w-screen font-bold c-white p-l p-r flex justify-between items-center"
+      >
+        Web Component Development (预览/调试)
+        <div class="flex gap-2">
+          <a
+            target="_blank"
+            href="https://github.com/OSpoon/web-component-development"
+          >
+            <img class="w-6 h-6" src="./assets/github.png" />
+          </a>
+          <a target="_blank" href="./coverage/lcov-report/index.html">
+            <img class="w-6 h-6" src="./assets/coverage.png" />
+          </a>
+        </div>
+      </h1>
+    </header>
+    <main class="flex">
+      <nav
+        class="overflow-auto p-5 bg-light-100 w-60 h-[calc(100vh-3rem)] border-r-solid border-r-dark border-r-1"
+      >
+        <ul>
+          <li class="h-8 line-height-loose">
+            <a
+              class="c-#4c4c52 hover:c-#55bffe"
+              href="./components/MyComponent/demo/index.html"
+              >MyComponent in H5</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <content class="w-full">
+        <iframe
+          id="iframe"
+          class="w-full h-[calc(100vh-3rem)] p5"
+          src="./components/MyComponent/demo/index.html"
+        ></iframe>
+      </content>
+    </main>
+    <script>
+      ;(() => {
+        const alist = document.querySelectorAll('a')
+        alist.forEach((a) => {
+          if (!a.target) {
+            a.addEventListener('click', function (event) {
+              event.preventDefault()
+              const iframe = document.querySelector('#iframe')
+              iframe.src = a.href
+            })
+          }
+        })
+      })()
+    </script>
+  </body>
 </html>
