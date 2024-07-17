@@ -1,22 +1,30 @@
 # 基于 Quarkc 跨端组件开发
+
 您可以基于本工程构建跨技术栈/无框架的组件，满足个性化需求。
 
 中文 | [English](./README.es-US.md)
+
 ## 调整
+
 在 `template-quarkc-component-ts` 的基础上做了以下更新：
-| 序号 | 描述                            |
+| 序号 | 描述 |
 | ---- | ------------------------------- |
-| 1    | 调整 `npm run build` 为批量构建  |
-| 2    | 新增 `npm run new` 创建组件  |
-| 3    | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/web-component-development/tree/unocss/README.md)  |
-| 4    | 替换测试套件为 `@web/test-runnner` |
+| 1 | 调整 `npm run build` 为批量构建 |
+| 2 | 新增 `npm run new` 创建组件 |
+| 3 | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/web-component-development/tree/unocss/README.md) |
+| 4 | 替换测试套件为 `@web/test-runnner` |
+
 ## 初始化
+
 ```
 npm install
 npm run dev
 ```
+
 ## 1. 生成组件
+
 创建名为 MyComponent 的组件：
+
 ```
 $ npm run new
 > web-component-development@0.0.1 new
@@ -26,7 +34,9 @@ $ npm run new
 ✔  ++ /components/MyComponent/index.less
 ✔  ++ /components/MyComponent/vite-env.d.ts
 ```
+
 ## 2. 使用组件
+
 ```html
 <head>
   <!-- ① 导入组件 -->
@@ -37,11 +47,15 @@ $ npm run new
   <my-component text="为跨技术栈而生！"></my-component>
 </body>
 ```
+
 ## 3. 打包产物
+
 ```
 npm run build
 ```
+
 打包后的产出为 `dist/<组件名称>/index.js` 和 `dist/<组件名称>/index.umd.js`。
+
 ```tree
 .
 ├── types
@@ -50,8 +64,11 @@ npm run build
 ├── index.umd.js
 └── package.json
 ```
+
 ## 4. 验证产物
+
 将组件导入路径调整为打包后的产物路径
+
 ```html
 <head>
   <!-- ① 导入组件 -->
@@ -62,6 +79,7 @@ npm run build
   <my-component text="为跨技术栈而生！"></my-component>
 </body>
 ```
+
 ```html
 <head>
   <!-- ① 导入组件 -->
@@ -72,4 +90,5 @@ npm run build
   <my-component text="为跨技术栈而生！"></my-component>
 </body>
 ```
+
 想了解更多信息，请参考：https://quark-ecosystem.github.io/quarkc-docs/#/zh-CN/docs/publishing
