@@ -2,6 +2,7 @@
   "name": "web-component-development",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.0.2",
   "keywords": [
     "frontend",
     "quark",
@@ -18,7 +19,7 @@
   "module": "./lib/index.js",
   "types": "./lib/types/index.d.ts",
   "engines": {
-    "node": ">=14.18.0"
+    "node": "20 || >=22"
   },
   "scripts": {
     "dev": "npm run start",
@@ -32,10 +33,10 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "quarkc": "^2.1.3"
+    "quarkc": "^1.0.58"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.22.4",
+    "@antfu/eslint-config": "^2.23.0",
     "@open-wc/testing": "^4.0.0",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^20.11.22",
@@ -43,7 +44,7 @@
     "@web/test-runner": "^0.18.0",
     "change-case": "^5.4.3",
     "enquirer": "^2.4.1",
-    "eslint": "^9.5.0",
+    "eslint": "^9.7.0",
     "eslint-plugin-format": "^0.1.2",
     "esno": "^4.7.0",
     "execa": "^9.3.0",
@@ -59,11 +60,13 @@
     "tslib": "^2.6.2",
     "typescript": "^5.3.3",
     "unocss": "^0.61.5",
-    "vite": "^5.1.4",
+    "vite": "^5.3.4",
     "vite-plugin-dts": "^3.9.1"
   },
-  "overrides": {
-    "@typescript-eslint/eslint-plugin": "^8.0.0-alpha.40"
+  "peerDependencyRules": {
+    "allowedVersions": {
+      "eslint": "9"
+    }
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"
