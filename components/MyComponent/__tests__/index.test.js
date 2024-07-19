@@ -1,5 +1,5 @@
 import { expect, fixture } from '@open-wc/testing'
-import '../../../dist/MyComponent/index'
+import '../index'
 
 const data = {
   text: 'HelloWorld',

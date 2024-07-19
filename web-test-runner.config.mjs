@@ -1,12 +1,14 @@
+import { fileURLToPath } from 'node:url'
+import process from 'node:process'
 import { fromRollup } from '@web/dev-server-rollup'
 import rollupReplace from '@rollup/plugin-replace'
+import rollupPostcss from 'rollup-plugin-postcss'
+import { esbuildPlugin } from '@web/dev-server-esbuild'
 
-import {
-  AutomaticallyCompileComponents,
-  FixContentType,
-} from './web-test-runner.plugins.mjs'
+const tsConfigFileURL = fileURLToPath(new URL('./tsconfig.json', import.meta.url))
 
 const replace = fromRollup(rollupReplace)
+const postcss = fromRollup(rollupPostcss)
 
 const filteredLogs = ['Lit is in dev mode']
 
@@ -30,9 +32,29 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     return true
   },
+  mimeTypes: {
+    '**/*.less': 'js',
+    '**/*.css': 'js',
+  },
   plugins: [
-    AutomaticallyCompileComponents(),
-    FixContentType('.ts', 'js'),
+    postcss(
+      {
+        include: [
+          'components/**/*.less',
+          'components/**/*.css',
+        ],
+        modules: false,
+      },
+    ),
+    esbuildPlugin({
+      ts: true,
+      tsconfig: tsConfigFileURL,
+      tsx: true,
+      json: true,
+      define: {
+        'process.env.NODE_ENV': `'${process.env.NODE_ENV}'`,
+      },
+    }),
     replace({
       'preventAssignment': true,
       'process.env.NODE_ENV': '"development"',
