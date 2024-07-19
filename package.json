@@ -26,7 +26,7 @@
     "start": "vite --open",
     "build": "rimraf dist && esno ./scripts/components-script.ts",
     "test": "wtr",
-    "test:watch": "npm run test --watch",
+    "test:watch": "wtr --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "new": "plop",
