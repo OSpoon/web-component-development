@@ -1,12 +1,19 @@
+import { fromRollup } from '@web/dev-server-rollup'
+import rollupReplace from '@rollup/plugin-replace'
+
 import {
   AutomaticallyCompileComponents,
   FixContentType,
 } from './web-test-runner.plugins.mjs'
 
+const replace = fromRollup(rollupReplace)
+
 const filteredLogs = ['Lit is in dev mode']
 
 export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
   nodeResolve: true,
+  puppeteer: true,
+  debug: false,
   files: [
     'components/**/__tests__/*.test.js',
     'components/**/__tests__/*.test.ts',
@@ -23,5 +30,12 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     }
     return true
   },
-  plugins: [AutomaticallyCompileComponents(), FixContentType('.ts', 'js')],
+  plugins: [
+    AutomaticallyCompileComponents(),
+    FixContentType('.ts', 'js'),
+    replace({
+      'preventAssignment': true,
+      'process.env.NODE_ENV': '"development"',
+    }),
+  ],
 })
