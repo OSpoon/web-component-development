@@ -21,6 +21,9 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     'components/**/__tests__/*.test.ts',
   ],
   coverage: true,
+  coverageConfig: {
+    include: ['components/**/*.tsx'],
+  },
   filterBrowserLogs(log) {
     for (const arg of log.args) {
       if (
@@ -33,8 +36,8 @@ export default /** @type {import("@web/test-runner").TestRunnerConfig} */ ({
     return true
   },
   mimeTypes: {
-    '**/*.less': 'js',
-    '**/*.css': 'js',
+    'components/**/*.less': 'js',
+    'components/**/*.css': 'js',
   },
   plugins: [
     postcss(
