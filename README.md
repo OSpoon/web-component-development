@@ -13,6 +13,7 @@
 | 2 | 新增 `npm run new` 创建组件 |
 | 3 | [增加 `unocss` 原子 CSS 配置](https://github.com/OSpoon/web-component-development/tree/unocss/README.md) |
 | 4 | 替换测试套件为 `@web/test-runnner` |
+| 5 | 调整单元测试直接导入组件源码 |
 
 ## 初始化
 

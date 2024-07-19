@@ -13,6 +13,7 @@ Changes made to `template-quarkc-component-ts` include:
 | 2 | Added `npm run new` to create components |
 | 3 | [Add `unocss` atomic CSS configuration.](https://github.com/OSpoon/web-component-development/tree/unocss/README.md) |
 | 4 | Replace the test suite with `@web/test-runnner` |
+| 5 | Tuning unit tests directly import component source code |
 
 ## Initialization
 
