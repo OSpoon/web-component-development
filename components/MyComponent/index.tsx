@@ -30,7 +30,7 @@ class MyComponent extends QuarkElement {
           <a href="https://quarkc.hellobike.com" target="_blank">
             <img
               src="https://raw.githubusercontent.com/hellof2e/static/main/quark-logo.png"
-              class="logo"
+              className="logo"
               alt="quark logo"
             />
           </a>
