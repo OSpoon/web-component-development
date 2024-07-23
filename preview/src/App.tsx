@@ -1,10 +1,13 @@
 import './App.css'
-import { Button } from '@/components/ui/button'
+import { ThemeProvider } from '@/components/shared/theme-provider'
+import { Dashboard } from '@/components/shared/dashboard'
 
 function App() {
   return (
     <>
-      <Button>Click me</Button>
+      <ThemeProvider defaultTheme="system" storageKey="vite-ui-theme">
+        <Dashboard></Dashboard>
+      </ThemeProvider>
     </>
   )
 }
