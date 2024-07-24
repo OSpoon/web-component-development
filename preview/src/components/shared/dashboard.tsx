@@ -1,3 +1,4 @@
+import { Avatar, AvatarFallback, AvatarImage } from '@radix-ui/react-avatar'
 import { Preview } from './preview'
 import { Button } from '@/components/ui/button'
 import {
@@ -10,10 +11,14 @@ import {
 
 export function Dashboard() {
   return (
-    <div className="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
+    <div className="grid min-h-screen w-full md:grid-cols-[280px_1fr] lg:grid-cols-[300px_1fr]">
       <div className="hidden border-r bg-muted/40 md:block">
         <div className="flex h-full max-h-screen flex-col gap-2">
           <div className="flex justify-center h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
+            <Avatar className="mr-4">
+              <AvatarImage className="size-8" src="https://raw.githubusercontent.com/hellof2e/static/main/quark-logo.png" alt="@quarkc" />
+              <AvatarFallback>Quarkc</AvatarFallback>
+            </Avatar>
             <span className="font-semibold">Web Component Preview</span>
           </div>
           <div className="flex-1">
@@ -47,16 +52,17 @@ export function Dashboard() {
           <div className="mt-auto p-4">
             <Card x-chunk="dashboard-02-chunk-0">
               <CardHeader className="p-2 pt-0 md:p-4">
-                <CardTitle>Upgrade to Pro</CardTitle>
+                <CardTitle>I'm OSpoon</CardTitle>
                 <CardDescription>
-                  Unlock all features and get unlimited access to our support
-                  team.
+                  Front-end development engineer. Focus on building web applications and websites using Vue.js, Angular, Typescript, and Node.js.
                 </CardDescription>
               </CardHeader>
               <CardContent className="p-2 pt-0 md:p-4 md:pt-0">
-                <Button size="sm" className="w-full">
-                  Upgrade
-                </Button>
+                <a href="https://github.com/OSpoon" target="_blank">
+                  <Button size="sm" className="w-full">
+                    He's on Github
+                  </Button>
+                </a>
               </CardContent>
             </Card>
           </div>
