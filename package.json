@@ -65,7 +65,7 @@
     "simple-git-hooks": "^2.11.1",
     "tslib": "^2.6.2",
     "typescript": "^5.3.3",
-    "unocss": "^0.61.5",
+    "unocss": "^0.62.2",
     "vite": "^5.3.4",
     "vite-plugin-dts": "^3.9.1"
   },
