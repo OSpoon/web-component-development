@@ -33,7 +33,7 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "quarkc": "^2.1.3"
+    "quarkc": "^2.2.1"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
