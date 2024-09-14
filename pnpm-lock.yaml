@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       quarkc:
-        specifier: ^2.1.3
-        version: 2.1.3
+        specifier: ^2.2.1
+        version: 2.2.1
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.26.0
@@ -4032,8 +4032,8 @@ packages:
     resolution: {integrity: sha512-AWJm14H1vVaO/iNZ4/hO+HyaTehuy9nRqVdkTqlJt0HWvBiBIEXFmb4C0DGeYo3Xes9rrEW+TxHsaigCbN5ICQ==}
     engines: {node: '>=0.6'}
 
-  quarkc@2.1.3:
-    resolution: {integrity: sha512-PFb2SQbA/sTeiGJ5RD00m0fl1X96EklCz6aUfjiPAgNtgZejsv2h2lAr8HYqXUXrTrHQWtkqyPhjEfQ0CEjStA==}
+  quarkc@2.2.1:
+    resolution: {integrity: sha512-qIGyQDkGvQCQ2dph1rC2NDooMV7DrJAvcfeT81Jmbqnlt2AibXWy9rf1uiClN7vXokzENHlVq3jFzb9RLHPJSg==}
 
   querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -9300,7 +9300,7 @@ snapshots:
     dependencies:
       side-channel: 1.0.6
 
-  quarkc@2.1.3:
+  quarkc@2.2.1:
     dependencies:
       '@babel/runtime': 7.24.8
 
