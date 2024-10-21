@@ -106,8 +106,8 @@ importers:
         specifier: ^5.4.3
         version: 5.4.3(@types/node@22.7.5)(less@4.2.0)
       vite-plugin-dts:
-        specifier: ^4.2.1
-        version: 4.2.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.2)(vite@5.4.3(@types/node@22.7.5)(less@4.2.0))
+        specifier: ^4.2.4
+        version: 4.2.4(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.2)(vite@5.4.3(@types/node@22.7.5)(less@4.2.0))
 
 packages:
 
@@ -4467,8 +4467,8 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
 
-  vite-plugin-dts@4.2.1:
-    resolution: {integrity: sha512-/QlYvgUMiv8+ZTEerhNCYnYaZMM07cdlX6hQCR/w/g/nTh0tUXPoYwbT6SitizLJ9BybT1lnrcZgqheI6wromQ==}
+  vite-plugin-dts@4.2.4:
+    resolution: {integrity: sha512-REcYoxO90Pi8c0P1J7XAa/nVwNVGkX2eYkBEIfFSfcKE4g1W8sB0R23a7SU3aLEMfdOdb0SVHq3JlJ+Qb6gjgA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
@@ -4791,7 +4791,7 @@ snapshots:
   '@es-joy/jsdoccomment@0.43.1':
     dependencies:
       '@types/eslint': 8.56.10
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@typescript-eslint/types': 7.16.1
       comment-parser: 1.4.1
       esquery: 1.6.0
@@ -5155,7 +5155,7 @@ snapshots:
 
   '@rollup/plugin-node-resolve@15.2.3(rollup@4.24.0)':
     dependencies:
-      '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
+      '@rollup/pluginutils': 5.1.2(rollup@4.24.0)
       '@types/resolve': 1.20.2
       deepmerge: 4.3.1
       is-builtin-module: 3.2.1
@@ -5181,7 +5181,7 @@ snapshots:
 
   '@rollup/pluginutils@5.1.2(rollup@4.24.0)':
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       estree-walker: 2.0.2
       picomatch: 2.3.1
     optionalDependencies:
@@ -5367,12 +5367,12 @@ snapshots:
 
   '@types/eslint@8.56.10':
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
 
   '@types/eslint@9.6.0':
     dependencies:
-      '@types/estree': 1.0.5
+      '@types/estree': 1.0.6
       '@types/json-schema': 7.0.15
 
   '@types/estree@1.0.5': {}
@@ -5817,7 +5817,7 @@ snapshots:
       '@vue/shared': 3.4.32
       entities: 4.5.0
       estree-walker: 2.0.2
-      source-map-js: 1.2.0
+      source-map-js: 1.2.1
 
   '@vue/compiler-dom@3.4.32':
     dependencies:
@@ -9485,10 +9485,10 @@ snapshots:
 
   vary@1.1.2: {}
 
-  vite-plugin-dts@4.2.1(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.2)(vite@5.4.3(@types/node@22.7.5)(less@4.2.0)):
+  vite-plugin-dts@4.2.4(@types/node@22.7.5)(rollup@4.24.0)(typescript@5.6.2)(vite@5.4.3(@types/node@22.7.5)(less@4.2.0)):
     dependencies:
       '@microsoft/api-extractor': 7.47.7(@types/node@22.7.5)
-      '@rollup/pluginutils': 5.1.0(rollup@4.24.0)
+      '@rollup/pluginutils': 5.1.2(rollup@4.24.0)
       '@volar/typescript': 2.4.5
       '@vue/language-core': 2.1.6(typescript@5.6.2)
       compare-versions: 6.1.1
