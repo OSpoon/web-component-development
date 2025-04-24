@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Card in Vue.js</title>
+    <script type="module" src="../index.tsx"></script>
+    <script type="module" src="../../Button/index.tsx"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .demo-section {
+        margin-bottom: 30px;
+      }
+      .demo-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 16px;
+        align-items: flex-start;
+      }
+      .demo-box {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .demo-title {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 12px;
+      }
+      .card-container {
+        width: 280px;
+      }
+      .card-content {
+        padding: 8px 0;
+      }
+      p {
+        text-align: center;
+      }
+      a {
+        color: #646cff;
+      }
+      .result-panel {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+      .footer-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      .image-placeholder {
+        background: linear-gradient(
+          135deg,
+          #f5f7fa 25%,
+          #e4e7ed 25%,
+          #e4e7ed 50%,
+          #f5f7fa 50%,
+          #f5f7fa 75%,
+          #e4e7ed 75%,
+          #e4e7ed 100%
+        );
+        background-size: 20px 20px;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #909399;
+      }
+      .shadow-selector {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .shadow-button {
+        padding: 6px 12px;
+        cursor: pointer;
+        border: 1px solid #dcdfe6;
+        border-radius: 4px;
+        background-color: #ffffff;
+      }
+      .shadow-button.active {
+        background-color: #646cff;
+        color: white;
+        border-color: #646cff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Card Component in Vue.js</h1>
+
+      <h2>Basic Card</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <div class="card-container">
+            <q-card :title="cardTitle">
+              <div class="card-content">{{ cardContent }}</div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+
+      <h2>Shadow Control</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Select shadow type</div>
+          <div class="shadow-selector">
+            <button
+              v-for="type in shadowTypes"
+              :key="type"
+              @click="currentShadow = type"
+              class="shadow-button"
+              :class="{ active: currentShadow === type }"
+            >
+              {{ type }}
+            </button>
+          </div>
+          <div class="demo-row">
+            <div class="card-container">
+              <q-card :title="'Shadow: ' + currentShadow" :shadow="currentShadow">
+                <div class="card-content">
+                  This card demonstrates the {{ currentShadow }} shadow style. Click the buttons above to change shadow
+                  type.
+                </div>
+              </q-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Border Control</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Toggle border</div>
+          <div class="demo-row">
+            <q-button @click="toggleBorder">{{ borderButtonText }}</q-button>
+          </div>
+          <div class="demo-row">
+            <div class="card-container">
+              <q-card :title="'Border: ' + (hasBorder ? 'On' : 'Off')" :bordered="hasBorder">
+                <div class="card-content">
+                  This card shows how to control the border property. Current state: {{ hasBorder ? 'With border' :
+                  'Without border' }}
+                </div>
+              </q-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Loading State</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Toggle loading state</div>
+          <div class="demo-row">
+            <q-button @click="toggleLoading">{{ loadingButtonText }}</q-button>
+          </div>
+          <div class="demo-row">
+            <div class="card-container">
+              <q-card title="Loading Demo" :loading="isLoading">
+                <div class="card-content">
+                  This card demonstrates the loading state. The content will be masked when loading is true.
+                </div>
+                <div slot="footer">
+                  <div class="footer-buttons">
+                    <q-button size="small" type="primary" :disabled="isLoading">Action</q-button>
+                  </div>
+                </div>
+              </q-card>
+            </div>
+          </div>
+          <div class="result-panel">Loading state: {{ isLoading ? 'Active' : 'Inactive' }}</div>
+        </div>
+      </div>
+
+      <h2>Border Radius</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Adjust border radius: {{ currentRadius }}px</div>
+          <div class="demo-row">
+            <input type="range" min="0" max="24" v-model="currentRadius" />
+          </div>
+          <div class="demo-row">
+            <div class="card-container">
+              <q-card title="Radius Control" :radius="currentRadius">
+                <div class="card-content">
+                  This card demonstrates dynamic border radius control. Current value: {{ currentRadius }}px
+                </div>
+              </q-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Card with Header Image</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Toggle header image</div>
+          <div class="demo-row">
+            <q-button @click="toggleImage">{{ imageButtonText }}</q-button>
+          </div>
+          <div class="demo-row">
+            <div class="card-container">
+              <q-card title="Image Card" :headerImage="showImage ? headerImageUrl : ''">
+                <div class="card-content">
+                  This card demonstrates using a header image. Click the button to toggle the image.
+                </div>
+              </q-card>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2>Combined Examples</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <div class="card-container">
+            <q-card
+              :title="dynamicTitle"
+              :shadow="currentShadow"
+              :bordered="hasBorder"
+              :radius="currentRadius"
+              :headerImage="showImage ? headerImageUrl : ''"
+            >
+              <div class="card-content">
+                This card combines all properties dynamically. Try changing the controls above to see how they affect
+                this card.
+              </div>
+              <div slot="footer">
+                <div class="footer-buttons">
+                  <q-button size="small" type="text" @click="resetAll">Reset</q-button>
+                  <q-button size="small" type="primary" @click="applyRandomStyle">Random Style</q-button>
+                </div>
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p>Edit <code>components/Card/index.tsx</code> and save to test HMR</p>
+    <p><a href="./index.html">在 Html 中调试（Debugging in Html）</a></p>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module">
+    import '../index.tsx'
+
+    const { createApp } = Vue
+
+    createApp({
+      data() {
+        return {
+          cardTitle: 'Basic Card Example',
+          cardContent: 'This is a basic card component with title and content in a Vue.js environment.',
+          shadowTypes: ['light', 'medium', 'dark', 'none'],
+          currentShadow: 'light',
+          hasBorder: true,
+          borderButtonText: 'Remove Border',
+          isLoading: false,
+          loadingButtonText: 'Start Loading',
+          currentRadius: 8,
+          headerImageUrl:
+            'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3',
+          showImage: false,
+          imageButtonText: 'Show Image',
+          dynamicTitle: 'Interactive Card',
+        }
+      },
+      methods: {
+        toggleBorder() {
+          this.hasBorder = !this.hasBorder
+          this.borderButtonText = this.hasBorder ? 'Remove Border' : 'Add Border'
+        },
+        toggleLoading() {
+          this.isLoading = !this.isLoading
+          this.loadingButtonText = this.isLoading ? 'Stop Loading' : 'Start Loading'
+
+          // Auto reset loading after 3 seconds
+          if (this.isLoading) {
+            setTimeout(() => {
+              this.isLoading = false
+              this.loadingButtonText = 'Start Loading'
+            }, 3000)
+          }
+        },
+        toggleImage() {
+          this.showImage = !this.showImage
+          this.imageButtonText = this.showImage ? 'Hide Image' : 'Show Image'
+        },
+        resetAll() {
+          this.currentShadow = 'light'
+          this.hasBorder = true
+          this.borderButtonText = 'Remove Border'
+          this.isLoading = false
+          this.loadingButtonText = 'Start Loading'
+          this.currentRadius = 8
+          this.showImage = false
+          this.imageButtonText = 'Show Image'
+          this.dynamicTitle = 'Interactive Card'
+        },
+        applyRandomStyle() {
+          // Randomly select shadow
+          this.currentShadow = this.shadowTypes[Math.floor(Math.random() * this.shadowTypes.length)]
+
+          // Randomly toggle border
+          this.hasBorder = Math.random() > 0.5
+          this.borderButtonText = this.hasBorder ? 'Remove Border' : 'Add Border'
+
+          // Random radius between 0 and 24
+          this.currentRadius = Math.floor(Math.random() * 25)
+
+          // Randomly toggle image
+          this.showImage = Math.random() > 0.5
+          this.imageButtonText = this.showImage ? 'Hide Image' : 'Show Image'
+
+          // Update title
+          this.dynamicTitle = 'Random Style Applied'
+        },
+      },
+    }).mount('#app')
+  </script>
+</html>
