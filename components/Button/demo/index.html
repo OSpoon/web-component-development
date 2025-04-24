@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Button Component</title>
+    <script type="module" src="../index.tsx"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .demo-section {
+        margin-bottom: 30px;
+      }
+      .demo-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 16px;
+        align-items: center;
+      }
+      .demo-box {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .demo-title {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 12px;
+      }
+      .icon-star::before {
+        content: '★';
+      }
+      .icon-heart::before {
+        content: '♥';
+      }
+      .icon-check::before {
+        content: '✓';
+      }
+      .icon-arrow::before {
+        content: '→';
+      }
+      p {
+        text-align: center;
+      }
+      a {
+        color: #646cff;
+      }
+      #click-counter {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Button Component Demo</h1>
+
+    <h2>Button Types</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button type="primary">Primary</q-button>
+        <q-button type="secondary">Secondary</q-button>
+        <q-button type="danger">Danger</q-button>
+        <q-button type="text">Text</q-button>
+      </div>
+    </div>
+
+    <h2>Button Sizes</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button size="large">Large</q-button>
+        <q-button size="medium">Medium</q-button>
+        <q-button size="small">Small</q-button>
+      </div>
+
+      <div class="demo-row">
+        <q-button type="secondary" size="large">Large</q-button>
+        <q-button type="secondary" size="medium">Medium</q-button>
+        <q-button type="secondary" size="small">Small</q-button>
+      </div>
+    </div>
+
+    <h2>Disabled State</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button disabled>Disabled Primary</q-button>
+        <q-button type="secondary" disabled>Disabled Secondary</q-button>
+        <q-button type="danger" disabled>Disabled Danger</q-button>
+        <q-button type="text" disabled>Disabled Text</q-button>
+      </div>
+    </div>
+
+    <h2>Loading State</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button loading>Loading Primary</q-button>
+        <q-button type="secondary" loading>Loading Secondary</q-button>
+        <q-button type="danger" loading>Loading Danger</q-button>
+        <q-button type="text" loading>Loading Text</q-button>
+      </div>
+    </div>
+
+    <h2>With Icons</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button icon="icon-star">Star</q-button>
+        <q-button type="secondary" icon="icon-heart">Heart</q-button>
+        <q-button type="danger" icon="icon-check">Check</q-button>
+        <q-button type="text" icon="icon-arrow">Arrow</q-button>
+      </div>
+    </div>
+
+    <h2>Click Event Demo</h2>
+    <div class="demo-section">
+      <div class="demo-box">
+        <div class="demo-title">Click the button to increment counter</div>
+        <div class="demo-row">
+          <q-button id="click-demo-button">Click me</q-button>
+          <div id="click-counter">Count: 0</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Combined Examples</h2>
+    <div class="demo-section">
+      <div class="demo-row">
+        <q-button type="primary" size="large" icon="icon-star">Submit</q-button>
+        <q-button type="secondary" size="medium" loading>Processing</q-button>
+        <q-button type="danger" size="small" disabled>Cancel</q-button>
+      </div>
+    </div>
+
+    <script>
+      // Click counter demo
+      document.addEventListener('DOMContentLoaded', () => {
+        let counter = 0
+        const counterElement = document.getElementById('click-counter')
+        const button = document.getElementById('click-demo-button')
+
+        button.addEventListener('click', () => {
+          counter++
+          counterElement.textContent = `Count: ${counter}`
+        })
+      })
+    </script>
+
+    <p>Edit <code>components/Button/index.tsx</code> and save to test HMR</p>
+    <p>
+      <a href="./index.vue.html">在 Vue.js 中调试（Debugging in Vue.js）</a>
+    </p>
+  </body>
+</html>

@@ -45,7 +45,7 @@ export default {
       {
         type: 'add',
         path: `components/${name}/__tests__/index-${generateRandomId()}.test.${mode === 'JavaScript' ? 'js' : 'ts'
-          }`,
+        }`,
         templateFile: 'plop-templates/__tests__/src/index.test.js.hbs',
         data: {
           name,
