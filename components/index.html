@@ -1,0 +1,412 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Card Component Preview</title>
+    <script type="module" src="../Button/index.tsx"></script>
+    <script type="module" src="../Card/index.tsx"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+      }
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+        color: #646cff;
+      }
+      .description {
+        color: #666;
+        font-size: 14px;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      .section {
+        margin-bottom: 40px;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        margin-bottom: 20px;
+      }
+      .control-box {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 20px;
+      }
+      .control-title {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 12px;
+      }
+      .card-container {
+        width: 300px;
+      }
+      .card-content {
+        padding: 8px 0;
+        line-height: 1.5;
+      }
+      .footer-buttons {
+        display: flex;
+        justify-content: flex-end;
+        gap: 8px;
+      }
+      .control-panel {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 16px;
+      }
+      .radius-control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .radius-value {
+        min-width: 30px;
+        text-align: center;
+        font-weight: bold;
+      }
+      .shadow-buttons {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .shadow-button {
+        padding: 6px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        cursor: pointer;
+        background: #f9f9f9;
+      }
+      .shadow-button.active {
+        background: #646cff;
+        color: white;
+        border-color: #646cff;
+      }
+      p {
+        text-align: center;
+      }
+      a {
+        color: #646cff;
+      }
+      .image-placeholder {
+        background: linear-gradient(
+          135deg,
+          #f5f7fa 25%,
+          #e4e7ed 25%,
+          #e4e7ed 50%,
+          #f5f7fa 50%,
+          #f5f7fa 75%,
+          #e4e7ed 75%,
+          #e4e7ed 100%
+        );
+        background-size: 20px 20px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #909399;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Card Component Preview</h1>
+
+    <div class="description">
+      This page showcases the Card component with various configurations. The Card component supports customizable
+      title, content area, footer actions, shadow effects, borders, border radius, loading state and header images.
+    </div>
+
+    <div class="section">
+      <h2>Basic Card</h2>
+      <div class="description">
+        The basic Card component with default settings. It has a title, content area, and light shadow.
+      </div>
+      <div class="row">
+        <div class="card-container">
+          <q-card title="Basic Card">
+            <div class="card-content">
+              This is a basic card with default properties. The Card component is highly customizable with various
+              properties and slots.
+            </div>
+          </q-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Shadow Types</h2>
+      <div class="description">Cards can have different shadow intensities: none, light, medium, and dark.</div>
+      <div class="control-box">
+        <div class="control-title">Select shadow type</div>
+        <div class="shadow-buttons" id="shadow-selector">
+          <button class="shadow-button" data-shadow="none">None</button>
+          <button class="shadow-button active" data-shadow="light">Light</button>
+          <button class="shadow-button" data-shadow="medium">Medium</button>
+          <button class="shadow-button" data-shadow="dark">Dark</button>
+        </div>
+        <div class="row">
+          <div class="card-container">
+            <q-card id="shadow-demo-card" title="Shadow Demo" shadow="light">
+              <div class="card-content">
+                This card demonstrates different shadow effects. Click the buttons above to change the shadow type.
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Border Control</h2>
+      <div class="description">Cards can be displayed with or without a border.</div>
+      <div class="control-box">
+        <div class="control-title">Toggle card border</div>
+        <div class="control-panel">
+          <q-button id="toggle-border" type="primary">Remove Border</q-button>
+        </div>
+        <div class="row">
+          <div class="card-container">
+            <q-card id="border-demo-card" title="Border Control">
+              <div class="card-content">
+                This card demonstrates border control. Click the button above to toggle the border visibility.
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Border Radius</h2>
+      <div class="description">The corner radius of cards can be customized to create different visual styles.</div>
+      <div class="control-box">
+        <div class="control-title">Adjust border radius</div>
+        <div class="control-panel">
+          <div class="radius-control">
+            <q-button id="decrease-radius" size="small">-</q-button>
+            <span class="radius-value" id="radius-value">8</span>
+            <q-button id="increase-radius" size="small">+</q-button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="card-container">
+            <q-card id="radius-demo-card" title="Border Radius" radius="8">
+              <div class="card-content">
+                This card demonstrates customizable border radius. Use the buttons above to adjust the corner roundness.
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Loading State</h2>
+      <div class="description">Cards can display a loading state to indicate that content is being loaded.</div>
+      <div class="control-box">
+        <div class="control-title">Toggle loading state</div>
+        <div class="control-panel">
+          <q-button id="toggle-loading" type="primary">Start Loading</q-button>
+        </div>
+        <div class="row">
+          <div class="card-container">
+            <q-card id="loading-demo-card" title="Loading State">
+              <div class="card-content">
+                This card demonstrates the loading state. Click the button above to toggle loading.
+              </div>
+              <div slot="footer">
+                <div class="footer-buttons">
+                  <q-button size="small" type="primary" id="loading-action-btn">Action</q-button>
+                </div>
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Card with Header Image</h2>
+      <div class="description">Cards can include a header image above the title and content.</div>
+      <div class="row">
+        <div class="card-container">
+          <q-card
+            title="Mountain View"
+            headerImage="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+          >
+            <div class="card-content">A beautiful mountain landscape with snow-capped peaks and clear skies.</div>
+            <div slot="footer">
+              <div class="footer-buttons">
+                <q-button size="small" type="text">Share</q-button>
+                <q-button size="small" type="primary">View</q-button>
+              </div>
+            </div>
+          </q-card>
+        </div>
+
+        <div class="card-container">
+          <q-card
+            headerImage="https://images.unsplash.com/photo-1579546929518-9e396f3cc809?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+          >
+            <div class="card-content">
+              Card with only header image and no title. Images adapt to the card width automatically.
+            </div>
+          </q-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Footer Actions</h2>
+      <div class="description">Cards can include footer actions using the footer slot.</div>
+      <div class="row">
+        <div class="card-container">
+          <q-card title="Card with Footer">
+            <div class="card-content">
+              This card has footer actions with different button styles. Footer content is added using a named slot.
+            </div>
+            <div slot="footer">
+              <div class="footer-buttons">
+                <q-button size="small" type="secondary">Cancel</q-button>
+                <q-button size="small" type="primary">Confirm</q-button>
+              </div>
+            </div>
+          </q-card>
+        </div>
+
+        <div class="card-container">
+          <q-card title="Footer Variations">
+            <div class="card-content">
+              Different style of footer buttons including text, danger, and primary styles.
+            </div>
+            <div slot="footer">
+              <div class="footer-buttons">
+                <q-button size="small" type="text">More</q-button>
+                <q-button size="small" type="danger">Delete</q-button>
+                <q-button size="small" type="primary">Save</q-button>
+              </div>
+            </div>
+          </q-card>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>Complete Example</h2>
+      <div class="description">A fully featured card with all properties combined.</div>
+      <div class="row">
+        <div class="card-container">
+          <q-card
+            title="Complete Card Example"
+            shadow="medium"
+            radius="12"
+            headerImage="https://images.unsplash.com/photo-1682686581362-796145f0e123?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+          >
+            <div class="card-content">
+              This card combines multiple features: header image, title, medium shadow, custom radius, and footer
+              actions.
+            </div>
+            <div slot="footer">
+              <div class="footer-buttons">
+                <q-button size="small" type="text">Share</q-button>
+                <q-button size="small" type="danger">Delete</q-button>
+                <q-button size="small" type="primary">Save</q-button>
+              </div>
+            </div>
+          </q-card>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Shadow selector
+        const shadowSelector = document.getElementById('shadow-selector')
+        const shadowDemoCard = document.getElementById('shadow-demo-card')
+
+        shadowSelector.addEventListener('click', (e) => {
+          if (e.target.classList.contains('shadow-button')) {
+            // Remove active class from all buttons
+            shadowSelector.querySelectorAll('.shadow-button').forEach((btn) => {
+              btn.classList.remove('active')
+            })
+
+            // Add active class to clicked button
+            e.target.classList.add('active')
+
+            // Update card shadow
+            const shadowType = e.target.dataset.shadow
+            shadowDemoCard.shadow = shadowType
+          }
+        })
+
+        // Border toggle
+        const toggleBorderBtn = document.getElementById('toggle-border')
+        const borderDemoCard = document.getElementById('border-demo-card')
+
+        toggleBorderBtn.addEventListener('click', () => {
+          borderDemoCard.bordered = !borderDemoCard.bordered
+          toggleBorderBtn.textContent = borderDemoCard.bordered ? 'Remove Border' : 'Add Border'
+        })
+
+        // Border radius control
+        const decreaseRadiusBtn = document.getElementById('decrease-radius')
+        const increaseRadiusBtn = document.getElementById('increase-radius')
+        const radiusDemoCard = document.getElementById('radius-demo-card')
+        const radiusValue = document.getElementById('radius-value')
+
+        decreaseRadiusBtn.addEventListener('click', () => {
+          if (radiusDemoCard.radius > 0) {
+            radiusDemoCard.radius -= 4
+            radiusValue.textContent = radiusDemoCard.radius
+          }
+        })
+
+        increaseRadiusBtn.addEventListener('click', () => {
+          radiusDemoCard.radius += 4
+          radiusValue.textContent = radiusDemoCard.radius
+        })
+
+        // Loading state toggle
+        const toggleLoadingBtn = document.getElementById('toggle-loading')
+        const loadingDemoCard = document.getElementById('loading-demo-card')
+        const loadingActionBtn = document.getElementById('loading-action-btn')
+
+        toggleLoadingBtn.addEventListener('click', () => {
+          loadingDemoCard.loading = !loadingDemoCard.loading
+          toggleLoadingBtn.textContent = loadingDemoCard.loading ? 'Stop Loading' : 'Start Loading'
+          loadingActionBtn.disabled = loadingDemoCard.loading
+
+          // Auto disable loading after 3 seconds
+          if (loadingDemoCard.loading) {
+            setTimeout(() => {
+              loadingDemoCard.loading = false
+              toggleLoadingBtn.textContent = 'Start Loading'
+              loadingActionBtn.disabled = false
+            }, 3000)
+          }
+        })
+      })
+    </script>
+
+    <p>
+      <a href="../Card/demo/index.html">View Card Demo Page</a> |
+      <a href="../Card/demo/index.vue.html">View Vue.js Demo Page</a> |
+      <a href="../../index.html">Back to Main Page</a>
+    </p>
+  </body>
+</html>

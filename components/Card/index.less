@@ -1,0 +1,223 @@
+/* CSS变量定义 - 与Button组件保持一致 */
+:host {
+  /* 主色系 */
+  --q-primary-color: #646cff;
+  --q-primary-light: #e6e8ff;
+  --q-primary-hover: #747bff;
+  --q-primary-active: #545bee;
+  --q-primary-light-hover: #d0d3ff;
+  --q-primary-light-active: #babeff;
+
+  /* 次要色系 */
+  --q-secondary-color: #909399;
+  --q-secondary-light: #f0f2f5;
+  --q-secondary-hover: #a6a9ad;
+  --q-secondary-active: #80848a;
+  --q-secondary-light-hover: #d8dadd;
+  --q-secondary-light-active: #c0c4c8;
+
+  /* 危险色系 */
+  --q-danger-color: #f56c6c;
+  --q-danger-light: #fef0f0;
+  --q-danger-hover: #ff7c7c;
+  --q-danger-active: #e05c5c;
+  --q-danger-light-hover: #fdd8d8;
+  --q-danger-light-active: #fbc4c4;
+
+  /* 文本颜色 */
+  --q-text-color: #333333;
+  --q-text-light: #606266;
+
+  /* 禁用状态 */
+  --q-disabled-color: #c0c4cc;
+  --q-disabled-bg: #f5f7fa;
+
+  /* 其他变量 */
+  --q-white: #ffffff;
+  --q-border-color: #dcdfe6;
+  --q-transition-duration: 0.3s;
+
+  /* 阴影效果 */
+  --q-shadow-none: none;
+  --q-shadow-light: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --q-shadow-medium: 0 3px 8px rgba(0, 0, 0, 0.12);
+  --q-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.16);
+
+  /* 卡片专用变量 */
+  --q-card-padding: 16px;
+  --q-card-header-padding: 16px 16px 0;
+  --q-card-footer-padding: 0 16px 16px; /* This variable is likely unused after the change below, but keep it for consistency */
+  --q-card-title-font-size: 16px;
+  --q-card-title-font-weight: 500;
+  --q-card-content-line-height: 1.5;
+  --q-card-header-border-bottom: 1px solid var(--q-border-color);
+  --q-card-footer-border-top: 1px solid var(--q-border-color);
+}
+
+/* 卡片基础样式 */
+.q-card {
+  position: relative;
+  background-color: var(--q-white);
+  box-sizing: border-box;
+  overflow: hidden;
+  transition:
+    box-shadow var(--q-transition-duration),
+    border-color var(--q-transition-duration);
+}
+
+/* 卡片阴影样式 */
+.q-card-shadow-none {
+  box-shadow: var(--q-shadow-none);
+}
+
+.q-card-shadow-light {
+  box-shadow: var(--q-shadow-light);
+}
+
+.q-card-shadow-medium {
+  box-shadow: var(--q-shadow-medium);
+}
+
+.q-card-shadow-dark {
+  box-shadow: var(--q-shadow-dark);
+}
+
+/* 卡片边框样式 */
+.q-card-bordered {
+  border: 1px solid var(--q-border-color);
+}
+
+/* 卡片头部样式 */
+.q-card-header {
+  padding: var(--q-card-header-padding);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-bottom: var(--q-card-header-border-bottom);
+}
+
+/* 卡片标题样式 */
+.q-card-title {
+  font-size: var(--q-card-title-font-size);
+  font-weight: var(--q-card-title-font-weight);
+  color: var(--q-text-color);
+  margin: 0;
+  padding: 8px 0;
+}
+
+/* 卡片头部图片 */
+.q-card-header-image {
+  margin-bottom: 12px;
+  overflow: hidden;
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* 卡片头部只有图片时的样式调整 */
+.q-card-header:has(.q-card-header-image:only-child) {
+  padding: 0;
+  border-bottom: none;
+}
+
+/* 卡片内容样式 */
+.q-card-content {
+  position: relative;
+  padding: var(--q-card-padding);
+  color: var(--q-text-light);
+  line-height: var(--q-card-content-line-height);
+}
+
+/* 卡片底部样式 */
+.q-card-footer {
+  padding: var(--q-card-padding); /* Optimized padding */
+  border-top: var(--q-card-footer-border-top);
+  /* 设置最小高度，确保即使没有内容也会保持一定高度 */
+  min-height: 24px;
+  display: flex;
+  align-items: center; /* Ensure vertical centering */
+  justify-content: space-between; /* Allow content distribution */
+}
+
+/* 卡片底部为空时不显示边框 */
+.q-card-footer:empty {
+  display: none;
+}
+
+/* 卡片加载状态样式 */
+.q-card-is-loading .q-card-content {
+  pointer-events: none;
+  min-height: 100px;
+}
+
+.q-card-loading-mask {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.q-card-loading-spinner {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border: 3px solid var(--q-primary-light);
+  border-radius: 50%;
+  border-top-color: var(--q-primary-color);
+  animation: q-card-loading 1s infinite linear;
+}
+
+@keyframes q-card-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 状态改变时的过渡效果 */
+.q-card:hover {
+  &.q-card-shadow-light {
+    box-shadow: var(--q-shadow-medium);
+  }
+
+  &.q-card-shadow-medium {
+    box-shadow: var(--q-shadow-dark);
+  }
+}
+
+/* 适配深色模式 */
+@media (prefers-color-scheme: dark) {
+  :host {
+    --q-text-color: #e5eaf3;
+    --q-text-light: #a3a6ad;
+    --q-disabled-bg: #2c2c2c;
+    --q-disabled-color: #686868;
+    --q-border-color: #4c4d4f;
+    --q-white: #1a1a1a;
+    --q-primary-light: rgba(100, 108, 255, 0.15);
+    --q-secondary-light: rgba(144, 147, 153, 0.15);
+    --q-danger-light: rgba(245, 108, 108, 0.15);
+
+    /* 深色模式下调整阴影 */
+    --q-shadow-light: 0 2px 6px rgba(0, 0, 0, 0.2);
+    --q-shadow-medium: 0 3px 8px rgba(0, 0, 0, 0.3);
+    --q-shadow-dark: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .q-card-loading-mask {
+    background-color: rgba(26, 26, 26, 0.7);
+  }
+}
