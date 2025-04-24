@@ -1,3 +1,31 @@
 /dist
 /coverage
 /node_modules
+
+# Clacky-related configuration
+.1024*
+!.1024
+.breakpoints
+
+# TypeScript and JavaScript files
+*.tsbuildinfo
+*.js.map
+
+# Build output
+/lib
+
+# Package manager directories
+.pnpm-store
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+.DS_Store
