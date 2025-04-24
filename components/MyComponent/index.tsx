@@ -7,7 +7,7 @@ import style from './index.less?inline'
 })
 class MyComponent extends QuarkElement {
   @property({ type: Number }) // 外部属性
-    count = 0
+  count = 0
 
   @property({ type: String })
   text = ''

@@ -1,0 +1,429 @@
+/* CSS变量定义 - 与官方实现保持一致 */
+:host {
+  /* 主色系 */
+  --q-primary-color: #646cff;
+  --q-primary-light: #e6e8ff;
+  --q-primary-hover: #747bff;
+  --q-primary-active: #545bee;
+  --q-primary-light-hover: #d0d3ff; // 90% primary-light + 10% primary-color
+  --q-primary-light-active: #babeff; // 85% primary-light + 15% primary-color
+
+  /* 次要色系 */
+  --q-secondary-color: #909399;
+  --q-secondary-light: #f0f2f5;
+  --q-secondary-hover: #a6a9ad;
+  --q-secondary-active: #80848a;
+  --q-secondary-light-hover: #d8dadd; // 90% secondary-light + 10% secondary-color
+  --q-secondary-light-active: #c0c4c8; // 85% secondary-light + 15% secondary-color
+
+  /* 危险色系 */
+  --q-danger-color: #f56c6c;
+  --q-danger-light: #fef0f0;
+  --q-danger-hover: #ff7c7c;
+  --q-danger-active: #e05c5c;
+  --q-danger-light-hover: #fdd8d8; // 90% danger-light + 10% danger-color
+  --q-danger-light-active: #fbc4c4; // 85% danger-light + 15% danger-color
+
+  /* 文本颜色 */
+  --q-text-color: #333333;
+  --q-text-light: #606266;
+
+  /* 禁用状态 */
+  --q-disabled-color: #c0c4cc;
+  --q-disabled-bg: #f5f7fa;
+
+  /* 其他变量 */
+  --q-white: #ffffff;
+  --q-border-color: #dcdfe6;
+  --q-border-radius-square: 2px;
+  --q-border-radius-round: 4px;
+  --q-transition-duration: 0.3s;
+
+  /* 阴影效果 */
+  --q-shadow-light: 0 2px 6px rgba(0, 0, 0, 0.08);
+  --q-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+
+  /* 按钮尺寸 */
+  --q-btn-large-height: 48px;
+  --q-btn-medium-height: 40px;
+  --q-btn-small-height: 32px;
+  --q-btn-large-font: 16px;
+  --q-btn-medium-font: 14px;
+  --q-btn-small-font: 12px;
+  --q-btn-padding-x: 16px;
+}
+
+/* 按钮基础样式 - 使用:host确保样式正确应用于Web Component */
+.q-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  outline: none;
+  border: 1px solid transparent;
+  user-select: none;
+  white-space: nowrap;
+  box-sizing: border-box;
+  vertical-align: middle;
+  line-height: 1;
+  text-align: center;
+  overflow: hidden;
+  transition:
+    background-color var(--q-transition-duration),
+    border-color var(--q-transition-duration),
+    color var(--q-transition-duration),
+    box-shadow var(--q-transition-duration);
+}
+
+/* 按钮形状 */
+.q-button-round {
+  border-radius: var(--q-border-radius-round);
+}
+
+.q-button-square {
+  border-radius: var(--q-border-radius-square);
+}
+
+/* 按钮类型样式 */
+/* 主要按钮 */
+.q-button-primary {
+  background-color: var(--q-primary-color);
+  color: var(--q-white);
+  border-color: var(--q-primary-color);
+
+  &:hover {
+    background-color: var(--q-primary-hover);
+    border-color: var(--q-primary-hover);
+  }
+
+  &:active {
+    background-color: var(--q-primary-active);
+    border-color: var(--q-primary-active);
+  }
+}
+
+/* 次要按钮 */
+.q-button-secondary {
+  background-color: var(--q-secondary-color);
+  color: var(--q-white);
+  border-color: var(--q-secondary-color);
+
+  &:hover {
+    background-color: var(--q-secondary-hover);
+    border-color: var(--q-secondary-hover);
+  }
+
+  &:active {
+    background-color: var(--q-secondary-active);
+    border-color: var(--q-secondary-active);
+  }
+}
+
+/* 危险按钮 */
+.q-button-danger {
+  background-color: var(--q-danger-color);
+  color: var(--q-white);
+  border-color: var(--q-danger-color);
+
+  &:hover {
+    background-color: var(--q-danger-hover);
+    border-color: var(--q-danger-hover);
+  }
+
+  &:active {
+    background-color: var(--q-danger-active);
+    border-color: var(--q-danger-active);
+  }
+}
+
+/* 文本按钮 */
+.q-button-text {
+  background-color: transparent;
+  color: var(--q-primary-color);
+  border-color: transparent;
+  padding-left: 0;
+  padding-right: 0;
+
+  &:hover {
+    color: var(--q-primary-hover);
+  }
+
+  &:active {
+    color: var(--q-primary-active);
+  }
+}
+
+/* Plain 样式 - 带边框的样式按钮 */
+.q-button-plain {
+  &.q-button-primary {
+    color: var(--q-primary-color);
+    background-color: var(--q-white);
+    border-color: var(--q-primary-color);
+
+    &:hover {
+      color: var(--q-primary-hover);
+      border-color: var(--q-primary-hover);
+      background-color: var(--q-primary-light);
+    }
+
+    &:active {
+      color: var(--q-primary-active);
+      border-color: var(--q-primary-active);
+      background-color: var(--q-primary-light);
+    }
+  }
+
+  &.q-button-secondary {
+    color: var(--q-secondary-color);
+    background-color: var(--q-white);
+    border-color: var(--q-secondary-color);
+
+    &:hover {
+      color: var(--q-secondary-hover);
+      border-color: var(--q-secondary-hover);
+      background-color: var(--q-secondary-light);
+    }
+
+    &:active {
+      color: var(--q-secondary-active);
+      border-color: var(--q-secondary-active);
+      background-color: var(--q-secondary-light);
+    }
+  }
+
+  &.q-button-danger {
+    color: var(--q-danger-color);
+    background-color: var(--q-white);
+    border-color: var(--q-danger-color);
+
+    &:hover {
+      color: var(--q-danger-hover);
+      border-color: var(--q-danger-hover);
+      background-color: var(--q-danger-light);
+    }
+
+    &:active {
+      color: var(--q-danger-active);
+      border-color: var(--q-danger-active);
+      background-color: var(--q-danger-light);
+    }
+  }
+}
+
+/* Light 样式 - 轻量级按钮 */
+.q-button-light {
+  &.q-button-primary {
+    color: var(--q-primary-color);
+    background-color: var(--q-primary-light);
+    border-color: transparent;
+
+    &:hover {
+      color: var(--q-primary-hover);
+      background-color: var(--q-primary-light-hover);
+    }
+
+    &:active {
+      color: var(--q-primary-active);
+      background-color: var(--q-primary-light-active);
+    }
+  }
+
+  &.q-button-secondary {
+    color: var(--q-text-light);
+    background-color: var(--q-secondary-light);
+    border-color: transparent;
+
+    &:hover {
+      color: var(--q-secondary-hover);
+      background-color: var(--q-secondary-light-hover);
+    }
+
+    &:active {
+      color: var(--q-secondary-active);
+      background-color: var(--q-secondary-light-active);
+    }
+  }
+
+  &.q-button-danger {
+    color: var(--q-danger-color);
+    background-color: var(--q-danger-light);
+    border-color: transparent;
+
+    &:hover {
+      color: var(--q-danger-hover);
+      background-color: var(--q-danger-light-hover);
+    }
+
+    &:active {
+      color: var(--q-danger-active);
+      background-color: var(--q-danger-light-active);
+    }
+  }
+}
+
+/* 按钮尺寸样式 - 统一高度与字体大小 */
+.q-button-large {
+  height: var(--q-btn-large-height);
+  padding: 0 calc(var(--q-btn-padding-x) * 1.25);
+  font-size: var(--q-btn-large-font);
+  border-radius: calc(var(--q-border-radius-round) * 1.25);
+}
+
+.q-button-medium {
+  height: var(--q-btn-medium-height);
+  padding: 0 var(--q-btn-padding-x);
+  font-size: var(--q-btn-medium-font);
+  border-radius: var(--q-border-radius-round);
+}
+
+.q-button-small {
+  height: var(--q-btn-small-height);
+  padding: 0 calc(var(--q-btn-padding-x) * 0.75);
+  font-size: var(--q-btn-small-font);
+  border-radius: calc(var(--q-border-radius-round) * 0.75);
+}
+
+/* 禁用状态样式 - 改进样式处理 */
+.q-button-disabled {
+  background-color: var(--q-disabled-bg) !important;
+  border-color: var(--q-disabled-color) !important;
+  color: var(--q-disabled-color) !important;
+  cursor: not-allowed !important;
+  box-shadow: none !important;
+  opacity: 0.6;
+  pointer-events: none;
+
+  &.q-button-text {
+    background-color: transparent !important;
+  }
+
+  &.q-button-plain {
+    background-color: var(--q-disabled-bg) !important;
+    border-color: var(--q-disabled-color) !important;
+  }
+
+  &.q-button-light {
+    background-color: var(--q-disabled-bg) !important;
+    border-color: transparent !important;
+  }
+}
+
+/* 加载状态样式 - 优化动画效果 */
+.q-button-loading {
+  cursor: default !important;
+  pointer-events: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    opacity: 0.6;
+    border-radius: inherit;
+  }
+}
+
+.q-button-loading-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  border: 0.125em solid currentColor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: q-button-loading 0.85s infinite linear;
+  position: relative;
+  z-index: 1;
+  vertical-align: middle;
+}
+
+@keyframes q-button-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* 带图标的按钮样式 */
+.q-button-with-icon {
+  .q-button-icon,
+  .q-button-loading-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .q-button-icon {
+    margin-right: 0.5em;
+    position: relative;
+    z-index: 1;
+    vertical-align: middle;
+  }
+
+  &.q-button-large .q-button-icon,
+  &.q-button-large .q-button-loading-icon {
+    font-size: calc(var(--q-btn-large-font) * 1.125);
+  }
+
+  &.q-button-medium .q-button-icon,
+  &.q-button-medium .q-button-loading-icon {
+    font-size: calc(var(--q-btn-medium-font) * 1.125);
+  }
+
+  &.q-button-small .q-button-icon,
+  &.q-button-small .q-button-loading-icon {
+    font-size: calc(var(--q-btn-small-font) * 1.125);
+  }
+}
+
+/* 按钮焦点状态和点击效果 - 优化点击效果和活动状态 */
+.q-button:focus-visible {
+  outline: 2px solid rgba(100, 108, 255, 0.3);
+  outline-offset: 2px;
+  box-shadow: var(--q-shadow-light);
+}
+
+.q-button:active {
+  transform: scale(0.98);
+  transition-duration: 0.1s;
+}
+
+/* 按钮ripple效果 */
+.q-button-ripple {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.35);
+  transform: scale(0);
+  animation: q-button-ripple 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes q-button-ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* 适配深色模式 */
+@media (prefers-color-scheme: dark) {
+  :host {
+    --q-text-color: #e5eaf3;
+    --q-text-light: #a3a6ad;
+    --q-disabled-bg: #2c2c2c;
+    --q-disabled-color: #686868;
+    --q-border-color: #4c4d4f;
+    --q-primary-light: rgba(100, 108, 255, 0.15);
+    --q-secondary-light: rgba(144, 147, 153, 0.15);
+    --q-danger-light: rgba(245, 108, 108, 0.15);
+  }
+}

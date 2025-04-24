@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Button in Vue.js</title>
+    <script type="module" src="../index.tsx"></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 10px;
+      }
+      .demo-section {
+        margin-bottom: 30px;
+      }
+      .demo-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-bottom: 16px;
+        align-items: center;
+      }
+      .demo-box {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 4px;
+        margin-bottom: 16px;
+      }
+      .demo-title {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 12px;
+      }
+      p {
+        text-align: center;
+      }
+      a {
+        color: #646cff;
+      }
+      .icon-star::before {
+        content: '★';
+      }
+      .icon-heart::before {
+        content: '♥';
+      }
+      .icon-check::before {
+        content: '✓';
+      }
+      .icon-arrow::before {
+        content: '→';
+      }
+      .result-panel {
+        background: #f0f0f0;
+        padding: 10px;
+        border-radius: 4px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Button Component in Vue.js</h1>
+
+      <h2>Button Types</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button type="primary">{{ primaryText }}</q-button>
+          <q-button type="secondary">{{ secondaryText }}</q-button>
+          <q-button type="danger">{{ dangerText }}</q-button>
+          <q-button type="text">{{ textButtonText }}</q-button>
+        </div>
+      </div>
+
+      <h2>Button Sizes</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button size="large">Large</q-button>
+          <q-button size="medium">Medium</q-button>
+          <q-button size="small">Small</q-button>
+        </div>
+      </div>
+
+      <h2>Disabled State</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button :disabled="isDisabled">Disabled Button</q-button>
+          <q-button type="secondary" :disabled="isDisabled">Disabled Secondary</q-button>
+          <button @click="toggleDisabled">Toggle Disabled</button>
+        </div>
+        <div class="result-panel">Disabled state: {{ isDisabled ? 'Yes' : 'No' }}</div>
+      </div>
+
+      <h2>Loading State</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button :loading="isLoading" @click="startLoading">{{ loadingButtonText }}</q-button>
+          <q-button type="secondary" :loading="isLoading">Processing...</q-button>
+        </div>
+        <div class="result-panel">Loading state: {{ isLoading ? 'Yes' : 'No' }}</div>
+      </div>
+
+      <h2>With Icons</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button icon="icon-star">Star</q-button>
+          <q-button type="secondary" icon="icon-heart">Heart</q-button>
+          <q-button type="danger" icon="icon-check">Check</q-button>
+          <q-button type="text" icon="icon-arrow">Arrow</q-button>
+        </div>
+      </div>
+
+      <h2>Click Event Handling</h2>
+      <div class="demo-section">
+        <div class="demo-box">
+          <div class="demo-title">Click the button to increment counter</div>
+          <div class="demo-row">
+            <q-button @click="incrementCounter">Click me ({{ counter }})</q-button>
+          </div>
+          <div class="result-panel">Last clicked at: {{ lastClickTime }}</div>
+        </div>
+      </div>
+
+      <h2>Combined Examples</h2>
+      <div class="demo-section">
+        <div class="demo-row">
+          <q-button type="primary" size="large" icon="icon-check" @click="showMessage('Submitted successfully!')"
+            >Submit</q-button
+          >
+          <q-button type="secondary" size="medium" :loading="isProcessing" @click="processAction"
+            >{{ processButtonText }}</q-button
+          >
+          <q-button type="danger" size="small" :disabled="isDangerDisabled" @click="dangerAction"
+            >{{ dangerButtonText }}</q-button
+          >
+        </div>
+        <div class="result-panel" v-if="message">{{ message }}</div>
+      </div>
+    </div>
+
+    <p>Edit <code>components/Button/index.tsx</code> and save to test HMR</p>
+    <p><a href="./index.html">在 Html 中调试（Debugging in Html）</a></p>
+  </body>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script type="module">
+    import '../index.tsx'
+
+    const { createApp } = Vue
+
+    createApp({
+      data() {
+        return {
+          primaryText: 'Primary Button',
+          secondaryText: 'Secondary Button',
+          dangerText: 'Danger Button',
+          textButtonText: 'Text Button',
+          isDisabled: true,
+          isLoading: false,
+          loadingButtonText: 'Click to Load',
+          counter: 0,
+          lastClickTime: 'Never clicked',
+          message: '',
+          isProcessing: false,
+          processButtonText: 'Process',
+          isDangerDisabled: false,
+          dangerButtonText: 'Delete',
+        }
+      },
+      methods: {
+        toggleDisabled() {
+          this.isDisabled = !this.isDisabled
+        },
+        startLoading() {
+          if (!this.isLoading) {
+            this.isLoading = true
+            this.loadingButtonText = 'Loading...'
+
+            // Simulate async operation
+            setTimeout(() => {
+              this.isLoading = false
+              this.loadingButtonText = 'Click to Load'
+            }, 2000)
+          }
+        },
+        incrementCounter() {
+          this.counter++
+          this.lastClickTime = new Date().toLocaleTimeString()
+        },
+        showMessage(msg) {
+          this.message = msg
+          setTimeout(() => {
+            this.message = ''
+          }, 3000)
+        },
+        processAction() {
+          if (!this.isProcessing) {
+            this.isProcessing = true
+            this.processButtonText = 'Processing...'
+
+            // Simulate async processing
+            setTimeout(() => {
+              this.isProcessing = false
+              this.processButtonText = 'Process'
+              this.showMessage('Processing completed!')
+            }, 2000)
+          }
+        },
+        dangerAction() {
+          this.isDangerDisabled = true
+          this.dangerButtonText = 'Deleted'
+          this.showMessage('Danger action triggered!')
+
+          // Reset after delay
+          setTimeout(() => {
+            this.isDangerDisabled = false
+            this.dangerButtonText = 'Delete'
+          }, 3000)
+        },
+      },
+    }).mount('#app')
+  </script>
+</html>
